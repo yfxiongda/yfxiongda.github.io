@@ -20,23 +20,6 @@ permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
-menu:
-  Index:
-    url: /
-    icon: fas fa-home
-  Tags:
-    url: /tags
-    icon: fas fa-tags
-  Categories:
-    url: /categories
-    icon: fas fa-bookmark
-  Archives:
-    url: /archives
-    icon: fas fa-archive
-  About:
-    url: /about
-    icon: fas fa-user-circle
-
 # Directory
 source_dir: source
 public_dir: public
@@ -151,7 +134,7 @@ githubEmojis:
   customEmojis:
 
 # RSS订阅支持
-<t_�b>feed:
+<t_?b>feed:
   type: atom
   path: atom.xml
   limit: 20
