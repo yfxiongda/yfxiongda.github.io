@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>布菜克先生的博客</title>
   
-  
+  <subtitle>布菜克先生的博客</subtitle>
   <link href="http://yfxiongda.github.io/atom.xml" rel="self"/>
   
   <link href="http://yfxiongda.github.io/"/>
