@@ -44,14 +44,14 @@ post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: false
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -106,7 +106,7 @@ deploy:
   repository: git@github.com:yfxiongda/yfxiongda.github.io.git
   branch: master
 
-#add search plugin
+#添加搜索支持
 search:
   patch: search.xml
   field: post
@@ -134,7 +134,7 @@ githubEmojis:
   customEmojis:
 
 # RSS订阅支持
-<t_?b>feed:
+feed:
   type: atom
   path: atom.xml
   limit: 20
@@ -143,3 +143,4 @@ githubEmojis:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
