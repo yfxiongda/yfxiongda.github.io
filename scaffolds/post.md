@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
-author: 
+author: bucaike 
 img: 
 coverImg: 
 top: false
