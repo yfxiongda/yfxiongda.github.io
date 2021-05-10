@@ -50,11 +50,17 @@ highlight:
   tab_replace: ''
   wrap: true
   hljs: false
-prismjs:
-  enable: true
-  preprocess: true
-  line_number: true
-  tab_replace: ''
+    #prismjs:
+    #  enable: true
+    #  preprocess: true
+    #  line_number: true
+    #  tab_replace: ''
+prism_plugin:
+  prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: true    # default false
+  custom_css:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
