@@ -105,7 +105,7 @@ categories:
 
    在浏览器上访问 `pan.xxx.com`，进入 owncloud 安装步骤：
 
-   <img src="https://i.loli.net/2021/05/08/F2KdDVZO3H9cY5n.png" alt="2163345-2754a4ae5792ef7f" style="zoom: 50%;" />
+   <img src="https://i.loli.net/2021/05/08/F2KdDVZO3H9cY5n.png" alt="安装步骤" style="zoom: 50%;" />
 
    这里可能会报错误：
 
