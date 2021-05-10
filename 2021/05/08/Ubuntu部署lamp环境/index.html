@@ -75,7 +75,8 @@
 <meta name="generator" content="Hexo 5.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="布菜克先生的博客" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
     <body>
 
@@ -584,7 +585,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        825
+                        812
                     </div>
                     
 
@@ -608,15 +609,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Ubuntu20-04安装lamp基础环境"><a href="#Ubuntu20-04安装lamp基础环境" class="headerlink" title="Ubuntu20.04安装lamp基础环境"></a>Ubuntu20.04安装lamp基础环境</h1><h2 id="我的设备："><a href="#我的设备：" class="headerlink" title="我的设备："></a>我的设备：</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ neofetch
+                <h1 id="Ubuntu20-04安装lamp基础环境"><a href="#Ubuntu20-04安装lamp基础环境" class="headerlink" title="Ubuntu20.04安装lamp基础环境"></a>Ubuntu20.04安装lamp基础环境</h1><h2 id="我的设备："><a href="#我的设备：" class="headerlink" title="我的设备："></a>我的设备：</h2><pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ neofetch
             .-/+oossssoo+/-.               black@black-OMEN 
         <span class="token variable"><span class="token variable">`</span>:+ssssssssssssssssss+:<span class="token variable">`</span></span>           ---------------- 
-      -+ssssssssssssssssssyyssss+-         OS: Ubuntu <span class="token number">20.04</span> LTS x86_64 
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.04 LTS x86_64 
     .ossssssssssssssssssdMMMNysssso.       Host: OMEN by HP Laptop 
-   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: <span class="token number">5.4</span>.0-40-generic 
-  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: <span class="token number">1</span> hour, <span class="token number">58</span> mins 
- /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: <span class="token number">1637</span> <span class="token punctuation">(</span>dpkg<span class="token punctuation">)</span>, <span class="token number">11</span> <span class="token punctuation">(</span>snap<span class="token punctuation">)</span> 
-.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: <span class="token function">bash</span> <span class="token number">5.0</span>.16 
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.4.0-40-generic 
+  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 1 hour, 58 mins 
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 1637 <span class="token punctuation">(</span>dpkg<span class="token punctuation">)</span>, 11 <span class="token punctuation">(</span>snap<span class="token punctuation">)</span> 
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: <span class="token function">bash</span> 5.0.16 
 +sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1920x1080 
 ossyNMMMNyMMhsssssssssssssshmmmhssssssso   DE: GNOME 
 ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter 
@@ -624,36 +625,36 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter
 .ssssssssdMMMNhsssssssssshNMMMdssssssss.   Theme: Yaru-dark <span class="token punctuation">[</span>GTK2/3<span class="token punctuation">]</span> 
  /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    Icons: Yaru <span class="token punctuation">[</span>GTK2/3<span class="token punctuation">]</span> 
   +sssssssssdmydMMMMMMMMddddyssssssss+     Terminal: gnome-terminal 
-   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: Intel i5-7300HQ <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> @ <span class="token number">3</span>.500GHz 
-    .ossssssssssssssssssdMMMNysssso.       GPU: Intel HD Graphics <span class="token number">630</span> 
-      -+sssssssssssssssssyyyssss+-         GPU: NVIDIA GeForce GTX <span class="token number">1050</span> Mobile 
+   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: Intel i5-7300HQ <span class="token punctuation">(</span>4<span class="token punctuation">)</span> @ 3.500GHz 
+    .ossssssssssssssssssdMMMNysssso.       GPU: Intel HD Graphics 630 
+      -+sssssssssssssssssyyyssss+-         GPU: NVIDIA GeForce GTX 1050 Mobile 
         <span class="token variable"><span class="token variable">`</span>:+ssssssssssssssssss+:<span class="token variable">`</span></span>           Memory: 2511MiB / 11867MiB 
             .-/+oossssoo+/-.
-                                                                   
-                                                                <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="安装php-php-fpm-apache2-Nginx-mariadb-server"><a href="#安装php-php-fpm-apache2-Nginx-mariadb-server" class="headerlink" title="安装php, php-fpm, apache2(Nginx), mariadb-server"></a>安装php, php-fpm, apache2(Nginx), mariadb-server</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> php php-fpm apache2 mariadb-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="安装php-php-fpm-apache2-Nginx-mariadb-server"><a href="#安装php-php-fpm-apache2-Nginx-mariadb-server" class="headerlink" title="安装php, php-fpm, apache2(Nginx), mariadb-server"></a>安装php, php-fpm, apache2(Nginx), mariadb-server</h2><pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> apt <span class="token function">install</span> php php-fpm apache2 mariadb-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="配置mariadb-server"><a href="#配置mariadb-server" class="headerlink" title="配置mariadb-server"></a>配置mariadb-server</h3><ul>
 <li><p>注意 <strong>root</strong> 运行</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> mysql_secure_installation
-<span class="token comment"># 首先会让你输入密码，因为是初次安装，所以直接回车即可</span>
-<span class="token comment"># 然后会让你设置root密码，并确认</span>
-<span class="token comment"># 之后的，一路回车即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> mysql_secure_installation
+<span class="token comment" spellcheck="true"># 首先会让你输入密码，因为是初次安装，所以直接回车即可</span>
+<span class="token comment" spellcheck="true"># 然后会让你设置root密码，并确认</span>
+<span class="token comment" spellcheck="true"># 之后的，一路回车即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此处不 <strong>root</strong> 运行<code>mysql_secure_installation</code>是会说你密码错误的。</p>
 </li>
 <li><p>运行服务</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> mariadb restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> mariadb restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>进入试试：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> mysql -u root -p
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> mysql -u root -p
 Enter password: 
-Welcome to the MariaDB monitor.  Commands end with <span class="token punctuation">;</span> or <span class="token punctuation">\</span>g.
-Your MariaDB connection <span class="token function">id</span> is <span class="token number">60</span>
-Server version: <span class="token number">10.3</span>.22-MariaDB-1ubuntu1 Ubuntu <span class="token number">20.04</span>
+Welcome to the MariaDB monitor.  Commands end with <span class="token punctuation">;</span> or \g.
+Your MariaDB connection <span class="token function">id</span> is 60
+Server version: 10.3.22-MariaDB-1ubuntu1 Ubuntu 20.04
 
-Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2000</span>, <span class="token number">2018</span>, Oracle, MariaDB Corporation Ab and others.
+Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-Type <span class="token string">'help;'</span> or <span class="token string">'\h'</span> <span class="token keyword">for</span> help. Type <span class="token string">'<span class="token entity" title="\c">\c</span>'</span> to <span class="token function">clear</span> the current input statement.
+Type <span class="token string">'help;'</span> or <span class="token string">'\h'</span> <span class="token keyword">for</span> help. Type <span class="token string">'\c'</span> to <span class="token function">clear</span> the current input statement.
 
-MariaDB <span class="token punctuation">[</span><span class="token punctuation">(</span>none<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> show databases<span class="token punctuation">;</span>
+MariaDB <span class="token punctuation">[</span><span class="token punctuation">(</span>none<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">></span> show databases<span class="token punctuation">;</span>
 +--------------------+
 <span class="token operator">|</span> Database           <span class="token operator">|</span>
 +--------------------+
@@ -661,17 +662,18 @@ MariaDB <span class="token punctuation">[</span><span class="token punctuation">
 <span class="token operator">|</span> mysql              <span class="token operator">|</span>
 <span class="token operator">|</span> performance_schema <span class="token operator">|</span>
 +--------------------+
-<span class="token number">3</span> rows <span class="token keyword">in</span> <span class="token builtin class-name">set</span> <span class="token punctuation">(</span><span class="token number">0.001</span> sec<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+3 rows <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.001 sec<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>至此成功。</p>
 </li>
 </ul>
 <h3 id="配置apache2和php-fpm"><a href="#配置apache2和php-fpm" class="headerlink" title="配置apache2和php-fpm"></a>配置apache2和php-fpm</h3><ul>
 <li><p>首先停止这两个的服务</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> apache2 stop
-black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> php7.4-fpm stop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> apache2 stop
+black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> php7.4-fpm stop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
 <li><p>编辑apache2配置文件</p>
 <p>首先看下目录结构：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token builtin class-name">cd</span> /etc/apache2/
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">cd</span> /etc/apache2/
 black@black-OMEN:/etc/apache2$ <span class="token function">ls</span>
 apache2.conf  conf-available  conf-enabled  envvars  magic  mods-available  mods-enabled  ports.conf  sites-available  sites-enabled
 black@black-OMEN:/etc/apache2$ tree conf-available/
@@ -683,46 +685,46 @@ conf-available/
 ├── security.conf
 └── serve-cgi-bin.conf
 
-<span class="token number">0</span> directories, <span class="token number">6</span> files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0 directories, 6 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由上面可以看到，在<code>conf-available</code>中已经有配置好的文件。那怎么让它生效呢？看下<code>conf-enabled</code>目录结构：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:/etc/apache2$ tree conf-enabled/
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:/etc/apache2$ tree conf-enabled/
 conf-enabled/
-├── charset.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/charset.conf
-├── localized-error-pages.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/localized-error-pages.conf
-├── other-vhosts-access-log.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/other-vhosts-access-log.conf
-├── security.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/security.conf
-└── serve-cgi-bin.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/serve-cgi-bin.conf
+├── charset.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/charset.conf
+├── localized-error-pages.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/localized-error-pages.conf
+├── other-vhosts-access-log.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/other-vhosts-access-log.conf
+├── security.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/security.conf
+└── serve-cgi-bin.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/serve-cgi-bin.conf
 
-<span class="token number">0</span> directories, <span class="token number">5</span> files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0 directories, 5 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由此可发现，实际上<code>conf-enabled</code>就是<code>conf-available</code>里的软连接，因此，<strong>我们只需要在<code>conf-enabled</code>里创建<code>conf-available/php7.4-fpm.conf</code>的软链接即可</strong>。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:/etc/apache2$ <span class="token builtin class-name">cd</span> conf-enabled/
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:/etc/apache2$ <span class="token function">cd</span> conf-enabled/
 black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">ln</span> -s <span class="token punctuation">..</span>/conf-available/php7.4-fpm.conf 
-<span class="token comment"># 此时查看enabled情况，发现已经被添加到了。</span>
-black@black-OMEN:/etc/apache2/conf-enabled$ tree <span class="token builtin class-name">.</span>
-<span class="token builtin class-name">.</span>
-├── charset.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/charset.conf
-├── localized-error-pages.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/localized-error-pages.conf
-├── other-vhosts-access-log.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/other-vhosts-access-log.conf
-├── php7.4-fpm.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/php7.4-fpm.conf
-├── security.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/security.conf
-└── serve-cgi-bin.conf -<span class="token operator">&gt;</span> <span class="token punctuation">..</span>/conf-available/serve-cgi-bin.conf
+<span class="token comment" spellcheck="true"># 此时查看enabled情况，发现已经被添加到了。</span>
+black@black-OMEN:/etc/apache2/conf-enabled$ tree <span class="token keyword">.</span>
+<span class="token keyword">.</span>
+├── charset.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/charset.conf
+├── localized-error-pages.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/localized-error-pages.conf
+├── other-vhosts-access-log.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/other-vhosts-access-log.conf
+├── php7.4-fpm.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/php7.4-fpm.conf
+├── security.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/security.conf
+└── serve-cgi-bin.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/serve-cgi-bin.conf
 
-<span class="token number">0</span> directories, <span class="token number">6</span> files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0 directories, 6 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注意：</strong>因为我这里装的正好就是<code>php7.4-fpm</code>，而且是通过<code>apt</code>装的，所以使用默认即可，如果你不是用的默认的，则还需要修改下<code>php7.4-fpm.conf</code>中的参数。</p>
 </li>
 <li><p>重启服务，测试</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 启动服务</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动服务</span>
 black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">service</span> apache2 restart
 black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">service</span> php7.4-fpm restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>测试<code>html</code></p>
-<pre class="line-numbers language-none"><code class="language-none">black@black-OMEN:/etc/apache2/conf-enabled$ sudo vim /var/www/html/test.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>black@black-OMEN:/etc/apache2/conf-enabled$ sudo vim /var/www/html/test.html</code></pre>
 <p>此时若访问<a href="localhost/test.html">localhost/test.html</a>配置即完成。</p>
 <p>测试<code>.php</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">vim</span> /var/www/html/test.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> vim /var/www/html/test.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>写入：</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
     <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>此时若访问<a href="localhost/test.php">localhost/test.php</a>配置即完成。</p>
 </li>
 </ul>
@@ -1322,6 +1324,38 @@ $(function () {
         
 
         <!-- 在线聊天工具  洪卫 shw2018 add 2019.09.11 -->
+        
+            <script src="//code.tidio.co/xxxxxxxxxxxxxxxxxxxxxxxxxxx.js"></script>
+            <!--  在线聊天位置自定义  洪卫 shw2018 add 2019.09.13  -->
+            <script> 
+                $(document).ready(function () {
+
+                    setInterval(change_Tidio, 50);  
+                    function change_Tidio() { 
+
+                        var tidio=$("#tidio-chat iframe");
+                        if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"80px":"20px";   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                            document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        } 
+                        else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+                        else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+
+                        if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                            document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                        }
+                    } 
+                }); 
+            </script>
         
 
         <!-- 背景 canvas-nest  洪卫 shw 2018  add 2019.09.15-->

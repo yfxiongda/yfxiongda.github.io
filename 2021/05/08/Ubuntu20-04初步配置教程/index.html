@@ -77,7 +77,8 @@ black@black-OMEN:~$ neofetch
 <meta name="generator" content="Hexo 5.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="布菜克先生的博客" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
     <body>
 
@@ -613,15 +614,15 @@ black@black-OMEN:~$ neofetch
                 <blockquote>
 <p>本文主要介绍下<code>Ubuntu20.04</code>在我手上的日常使用，以及一些一本软件的安装，作为大家的参考。</p>
 <p>我的环境：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ neofetch 
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ neofetch 
             .-/+oossssoo+/-.               black@black-OMEN 
         <span class="token variable"><span class="token variable">`</span>:+ssssssssssssssssss+:<span class="token variable">`</span></span>           ---------------- 
-      -+ssssssssssssssssssyyssss+-         OS: Ubuntu <span class="token number">20.04</span> LTS x86_64 
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.04 LTS x86_64 
     .ossssssssssssssssssdMMMNysssso.       Host: OMEN by HP Laptop 
-   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: <span class="token number">5.4</span>.0-40-generic 
-  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: <span class="token number">46</span> mins 
- /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: <span class="token number">1922</span> <span class="token punctuation">(</span>dpkg<span class="token punctuation">)</span>, <span class="token number">11</span> <span class="token punctuation">(</span>s 
-.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: <span class="token function">bash</span> <span class="token number">5.0</span>.16 
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.4.0-40-generic 
+  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 46 mins 
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 1922 <span class="token punctuation">(</span>dpkg<span class="token punctuation">)</span>, 11 <span class="token punctuation">(</span>s 
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: <span class="token function">bash</span> 5.0.16 
 +sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1920x1080 
 ossyNMMMNyMMhsssssssssssssshmmmhssssssso   DE: GNOME 
 ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter 
@@ -629,13 +630,13 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter
 .ssssssssdMMMNhsssssssssshNMMMdssssssss.   Theme: Yaru-dark <span class="token punctuation">[</span>GTK2/3<span class="token punctuation">]</span> 
  /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    Icons: Yaru <span class="token punctuation">[</span>GTK2/3<span class="token punctuation">]</span> 
   +sssssssssdmydMMMMMMMMddddyssssssss+     Terminal: gnome-terminal 
-   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: Intel i5-7300HQ <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> @ <span class="token number">3</span> 
-    .ossssssssssssssssssdMMMNysssso.       GPU: Intel HD Graphics <span class="token number">630</span> 
-      -+sssssssssssssssssyyyssss+-         GPU: NVIDIA GeForce GTX <span class="token number">1050</span> 
+   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: Intel i5-7300HQ <span class="token punctuation">(</span>4<span class="token punctuation">)</span> @ 3 
+    .ossssssssssssssssssdMMMNysssso.       GPU: Intel HD Graphics 630 
+      -+sssssssssssssssssyyyssss+-         GPU: NVIDIA GeForce GTX 1050 
         <span class="token variable"><span class="token variable">`</span>:+ssssssssssssssssss+:<span class="token variable">`</span></span>           Memory: 2699MiB / 11867MiB 
             .-/+oossssoo+/-.
-                                                                   
-                                                                   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><h3 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h3><blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://loige.co/random-emoji-in-your-prompt-how-and-why/">A random emoji in your terminal prompt. How and Why!</a></p>
@@ -644,14 +645,14 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter
 <p>​    展示下我的终端：</p>
 <p><img src="https://i.loli.net/2021/05/08/sFyWmPgZ65T2Oic.png" alt="我的终端界面"></p>
 <h4 id="展示命令成功与否"><a href="#展示命令成功与否" class="headerlink" title="展示命令成功与否"></a>展示命令成功与否</h4><p>命令执行得正确与否会有不同的表现。编辑代码<code>~/.bashrc</code>直接添加下面的代码：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">success_indicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
-        <span class="token builtin class-name">echo</span> <span class="token string">"😎"</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">function</span> success_indicator<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq 0 <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token keyword">echo</span> <span class="token string">"😎"</span>
     <span class="token keyword">else</span>
-        <span class="token builtin class-name">echo</span> <span class="token string">"💩"</span>
+        <span class="token keyword">echo</span> <span class="token string">"💩"</span>
     <span class="token keyword">fi</span>
 <span class="token punctuation">}</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PS1</span></span><span class="token operator">=</span><span class="token string">"\<span class="token variable"><span class="token variable">$(</span>success_indicator<span class="token variable">)</span></span>\[<span class="token entity" title="\e">\e</span>[32;40m\]\u\[<span class="token entity" title="\e">\e</span>[m\]\[<span class="token entity" title="\e">\e</span>[32m\]@\[<span class="token entity" title="\e">\e</span>[m\]\[<span class="token entity" title="\e">\e</span>[32m\]\h\[<span class="token entity" title="\e">\e</span>[m\]:\[<span class="token entity" title="\e">\e</span>[34m\]\W\[<span class="token entity" title="\e">\e</span>[m\]👉 "</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">export</span> PS1<span class="token operator">=</span><span class="token string">"\<span class="token variable"><span class="token variable">$(</span>success_indicator<span class="token variable">)</span></span>\[\e[32;40m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\W\[\e[m\]👉 "</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​    这里还使用了两个工具：<a target="_blank" rel="noopener" href="http://bashrcgenerator.com/">.bashrc PS1 generator by Julien Ricard</a> 和 <a target="_blank" rel="noopener" href="http://ezprompt.net/">Easy Bash PS1 Generator by Josh Matthews</a></p>
 <h4 id="展示文件夹和文件信息"><a href="#展示文件夹和文件信息" class="headerlink" title="展示文件夹和文件信息"></a>展示文件夹和文件信息</h4><ul>
 <li><p>安装字体</p>
@@ -660,15 +661,14 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter
 </li>
 <li><p>安装<code>clolorls</code></p>
 <p>首先需要安装<code>ruby</code>等。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> ruby ruby-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> ruby ruby-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> gem <span class="token function">install</span> colorls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> gem <span class="token function">install</span> colorls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>设置别名</p>
 <p><code>vim ~/.bashrc</code>添加下面两行：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">alias</span> <span class="token assign-left variable">ll</span><span class="token operator">=</span><span class="token string">'colorls -lA --sd --gs --group-directories-first'</span>
-<span class="token builtin class-name">alias</span> <span class="token assign-left variable">ls</span><span class="token operator">=</span><span class="token string">'colorls --group-directories-first'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">alias</span> ll<span class="token operator">=</span><span class="token string">'colorls -lA --sd --gs --group-directories-first'</span>
+<span class="token function">alias</span> ls<span class="token operator">=</span><span class="token string">'colorls --group-directories-first'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <h3 id="耳机杂音解决（Realtek-ALC295）"><a href="#耳机杂音解决（Realtek-ALC295）" class="headerlink" title="耳机杂音解决（Realtek ALC295）"></a>耳机杂音解决（Realtek ALC295）</h3><p>​    这个问题困扰了我好久了，之前装过<code>kali</code>，也出现了这样的情况，当时以为是通病，后来发现原来只有我有此问题。所以说，如果你的声音也出现了问题，可以搜索下自己的声卡型号。</p>
@@ -676,9 +676,9 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter
 <p><img src="https://i.loli.net/2020/07/21/eyqwDLd5obJCrSf.png"></p>
 <p>​    其中的<code>Chip</code>即是你的声卡型号。</p>
 <p>​    我在<a target="_blank" rel="noopener" href="https://bugs.launchpad.net/ubuntu/+source/alsa-driver/+bug/1648183">这个网站</a>找到了解决办法。首先安装<code>alsa-tools</code>：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> alsa-tools<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> alsa-tools<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后，在<code>/usr/local/bin</code>下写个脚本：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
 hda-verb /dev/snd/hwC0D0 0x20 SET_COEF_INDEX 0x67
 hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>并加权。运行之后即时生效。</p>
@@ -689,7 +689,7 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 <p>​    网上比较流行的一种方法是先将环境切换成英文，然后再切换成中文。特别麻烦，还要重启，也违背了<code>Linux</code>一切皆文件的思想，不知道这种方法怎么流行起来的。下面介绍我的方法</p>
 <ul>
 <li><p>编辑文件<code>user-dirs.dirs</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">vim</span> ~/.config/user-dirs.dirs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ vim ~/.config/user-dirs.dirs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>更改为：</p>
 <p><img src="https://i.loli.net/2020/07/21/UxTCVolPB6DbuA7.png"></p>
 </li>
@@ -716,7 +716,8 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 <p>现在，使用EWS（Exchange Web服务），将Outlook.com日历（还包括邮件和联系人）集成到Gnome Shell中，很简单，只需一个扩展即可。</p>
 </blockquote>
 <p>我们需要安装Evolution（MS Outlook的Linux替代产品）和Evolution-ews扩展。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> Evolution Evolution-ews<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> Evolution Evolution-ews<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>登陆账户</p>
 <p>打开“设置” ，“在线账户”，添加账号，<strong>选Microsoft Exchange</strong>（而不是“微软”）。</p>
 <p>在这里，电子邮箱输入你的的电子邮件地址，密码填刚才的 Microsoft 应用密码，展开“自定义”区域，再次输入您的电子邮件地址<strong>（与上面相同）作为用户名</strong>，重要的是输入Outlook.office365.com 作为服务器。然后点击“连接”。</p>
@@ -735,7 +736,7 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 <li><p>下载<code>macOS Mojave</code>壁纸</p>
 <p>下载地址：<a target="_blank" rel="noopener" href="https://files.rb.gd/mojave_dynamic.zip"><strong>mojave_dynamic.zip</strong></a></p>
 <p>将压缩包里面的内容提取到<code>~/Pictures/wallpapers</code>里，然后将文件夹重命名为<strong>mojave-background</strong>。最后的文件路径将会是：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/home/black/Pictures/wallpapers/mojave-background/
+<pre class="line-numbers language-bash"><code class="language-bash">/home/black/Pictures/wallpapers/mojave-background/
 ├── __MACOSX
 ├── mojave_dynamic_10.jpeg
 ├── mojave_dynamic_11.jpeg
@@ -754,7 +755,8 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 ├── mojave_dynamic_8.jpeg
 └── mojave_dynamic_9.jpeg
 
-<span class="token number">1</span> directory, <span class="token number">16</span> files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+1 directory, 16 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>获取XML脚本</p>
 <p>下载地址：<a target="_blank" rel="noopener" href="https://gist.githubusercontent.com/trongthanh/7d632e90687e1bc219e1f3262d337702/raw/8659a5432ad1ace0de3c8062435400db8a68f1cf/mojave.xml"><strong>mojave.xml</strong></a></p>
 <p>在您可以使用脚本之前，您需要在此处进行一些更改。在您选择的文本编辑器中打开xml文件。然后在脚本中查找并用你自己的用户名替换文件中的 <strong>thanh</strong>。例如，我在系统上使用的用户名是<strong>balck</strong>，因此会将文件中每一个<strong>thanh</strong>替换成<strong>black</strong>，完成后，保存。</p>
@@ -762,7 +764,8 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 <li><p>设置<code>macOS Mojave</code>动态壁纸</p>
 <ol>
 <li><p>安装<code>gnome-tweak-tools</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gnome-tweak-tools<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> gnome-tweak-tools<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>终端运行<code>gnome-tweaks</code>，在外观中选择xml文件作为壁纸：</p>
 <p><img src="https://i.loli.net/2020/07/21/5e2aXkIHi7Gzb4Y.png"></p>
 </li>
@@ -776,7 +779,7 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 </blockquote>
 <ul>
 <li><p>安装</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> timeshift<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> apt <span class="token function">install</span> timeshift<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>之后我们就可以在菜单看到软件了。</p>
 </li>
 <li><p>使用</p>
@@ -792,9 +795,10 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 </blockquote>
 <ul>
 <li><p>安装<code>deepin-wine</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> deepin-wine-for-ubuntu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> clone https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> deepin-wine-for-ubuntu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>选择合适于你的安装脚本，加可运行权限，我这里选择的是<code>install_2.8.22.sh</code>，执行：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x install_2.8.22.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> ./install_2.8.22.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x install_2.8.22.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> ./install_2.8.22.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>安装软件</p>
 <p>下载并安装所需要的<code>deepin-wine</code>容器 <em>（建议在终端下使用<code>dpkg -i</code>安装容器，否则容易误报依赖错误）</em></p>
 <ul>
@@ -855,23 +859,25 @@ hda-verb /dev/snd/hwC0D0 0x20 SET_PROC_COEF 0x3000<span aria-hidden="true" class
 </li>
 <li><p>微信更新问题</p>
 <p>如果出现微信提示跟新问题执行这一条语句即可</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -qO- https://deepin-wine.i-m.dev/setup.sh <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"> <span class="token function">wget</span> -qO- https://deepin-wine.i-m.dev/setup.sh <span class="token operator">|</span> <span class="token function">sudo</span> sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p><a target="_blank" rel="noopener" href="https://blog.diqigan.cn/posts/wine-global-hotkey-problem.html">wine 应用程序全局快捷键无效的解决方案</a></p>
 <ol>
 <li><p>安装 xdotool</p>
 <p>直接在命令行运行以下命令即可:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> --no-install-recommends xdotool<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> --no-install-recommends xdotool<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>编写 xdotool 脚本</p>
 <blockquote>
 <p>思路: Wine 应用在后台无法接收到快捷键状态, 此时借助 xdotool 向 Wine 应用发送模拟按键信息即可.</p>
 </blockquote>
 <p>在合适的位置新建一个脚本文件 “open_wechat.sh”, 写入以下内容:</p>
-<pre class="line-numbers language-none"><code class="language-none">#!/bin/sh
+<pre><code>#!/bin/sh
 #在当前运行的应用中找到名为WeChat.exe的应用程序，并向它发送按键事件"ctrl+alt+W"
 #WeChat的可执行文件名为WeChat.exe，如果是其它应用程序就修改成其它应用程序的可执行文件名, 应用名称大小写敏感, 一个字母都不能错!
-xdotool key --window $(xdotool search --limit 1 --all --pid $(pgrep WeChat.exe)) "ctrl+alt+W"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+xdotool key --window $(xdotool search --limit 1 --all --pid $(pgrep WeChat.exe)) "ctrl+alt+W"</code></pre>
 <p>赋予脚本可执行权限:</p>
-<pre class="line-numbers language-none"><code class="language-none">chmod +x open_wechat.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>chmod +x open_wechat.sh</code></pre>
 <p>如果此时你的微信正好运行在后台, 执行这个脚本就可以把它召唤到前台. 如果没有, 请检查脚本是否有错误。</p>
 </li>
 <li><p>设置快捷键</p>
@@ -891,25 +897,23 @@ xdotool key --window $(xdotool search --limit 1 --all --pid $(pgrep WeChat.exe))
 <li><p>问题记录</p>
 <ol>
 <li><p>微信无法发送图片</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libjpeg62:i386<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libjpeg62:i386<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>Fcitx（常见的就是搜狗）不能输入：</p>
 <ol>
 <li><p>找到wineQQ的安装目录，我的是在：<code>/opt/deepinwine/apps/Deepin-QQ</code>下，有个<code>run.sh</code>，vim编辑，最后一行添加：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#=================================</span>
-<span class="token comment">#搜狗输入法输入中文的问题</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">XMODIFIERS</span></span><span class="token operator">=</span><span class="token string">"@im=fcitx"</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">GTK_IM_MODULE</span><span class="token operator">=</span><span class="token string">"fcitx"</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">QT_IM_MODULE</span><span class="token operator">=</span><span class="token string">"fcitx"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#=================================</span>
+<span class="token comment" spellcheck="true">#搜狗输入法输入中文的问题</span>
+<span class="token function">export</span> XMODIFIERS<span class="token operator">=</span><span class="token string">"@im=fcitx"</span>
+<span class="token function">export</span> GTK_IM_MODULE<span class="token operator">=</span><span class="token string">"fcitx"</span>
+<span class="token function">export</span> QT_IM_MODULE<span class="token operator">=</span><span class="token string">"fcitx"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>如果是<code>Gnome</code>平台，可能会出现最小化之后不能再次输入的情况，还需要输入：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gsettings <span class="token builtin class-name">set</span> org.gnome.settings-daemon.plugins.keyboard active <span class="token boolean">false</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class="line-numbers language-bash"><code class="language-bash">gsettings <span class="token keyword">set</span> org.gnome.settings-daemon.plugins.keyboard active <span class="token boolean">false</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在<code>/etc/envirment</code>下添加：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">XMODIFIERS</span></span><span class="token operator">=</span><span class="token string">"@im=fcitx"</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">GTK_IM_MODULE</span><span class="token operator">=</span><span class="token string">"fcitx"</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">QT_IM_MODULE</span><span class="token operator">=</span><span class="token string">"fcitx"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">export</span> XMODIFIERS<span class="token operator">=</span><span class="token string">"@im=fcitx"</span>
+<span class="token function">export</span> GTK_IM_MODULE<span class="token operator">=</span><span class="token string">"fcitx"</span>
+<span class="token function">export</span> QT_IM_MODULE<span class="token operator">=</span><span class="token string">"fcitx"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>同时也在<code>/.profile</code>下加入。</p>
 </li>
 </ol>
@@ -923,69 +927,72 @@ xdotool key --window $(xdotool search --limit 1 --all --pid $(pgrep WeChat.exe))
 <p>输入命令<code>xev</code>，就能捕捉到一切动作，从中找出<code>keycode</code></p>
 </li>
 <li><p>导出目前使用的键盘映射</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">xmodmap -pke <span class="token operator">&gt;</span> ~/.Xmodmap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash">xmodmap -pke <span class="token operator">></span> ~/.Xmodmap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>修改文件</p>
 <p>我将键盘上的大小写键改成了方向键→，于是编辑文件，首行加上</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">clear</span> Lock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">clear</span> Lock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>把<code>keycode  66</code>改成<code>keycode  66 = Right NoSymbol Right</code></p>
 <p>结尾上：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">add</span> Lock <span class="token operator">=</span> Caps_Lock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash">add Lock <span class="token operator">=</span> Caps_Lock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>生效</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">xmodmap ~/.Xmodmap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash">xmodmap ~/.Xmodmap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>自动激活</p>
 <p>编辑<code>~/.xinitrc</code></p>
 </li>
 </ol>
-<h2 id="zip解压乱码"><a href="#zip解压乱码" class="headerlink" title="zip解压乱码"></a>zip解压乱码</h2><h3 id="unzip解决方案："><a href="#unzip解决方案：" class="headerlink" title="unzip解决方案："></a>unzip解决方案：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> -O cp936 ./1.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="zip解压乱码"><a href="#zip解压乱码" class="headerlink" title="zip解压乱码"></a>zip解压乱码</h2><h3 id="unzip解决方案："><a href="#unzip解决方案：" class="headerlink" title="unzip解决方案："></a>unzip解决方案：</h3><pre class="line-numbers language-bash"><code class="language-bash">unzip -O cp936 ./1.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><h3 id="安装zsh的包管理器antigen"><a href="#安装zsh的包管理器antigen" class="headerlink" title="安装zsh的包管理器antigen"></a>安装zsh的包管理器<code>antigen</code></h3><pre class="line-numbers language-bash"><code class="language-bash">curl -L git.io/antigen <span class="token operator">></span> .antigen.zsh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><pre class="line-numbers language-bash"><code class="language-bash">vim .zshrc
+<span class="token comment" spellcheck="true"># 写入</span>
+<span class="token function">source</span> /home/black/Tools/antigen.zsh
 
-
-<h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><h3 id="安装zsh的包管理器antigen"><a href="#安装zsh的包管理器antigen" class="headerlink" title="安装zsh的包管理器antigen"></a>安装zsh的包管理器<code>antigen</code></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -L git.io/antigen <span class="token operator">&gt;</span> .antigen.zsh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> .zshrc
-<span class="token comment"># 写入</span>
-<span class="token builtin class-name">source</span> /home/black/Tools/antigen.zsh
-
-<span class="token comment"># 加载oh-my-zsh库</span>
+<span class="token comment" spellcheck="true"># 加载oh-my-zsh库</span>
 antigen use oh-my-zsh
 
-<span class="token comment"># 加载原版oh-my-zsh中的功能(robbyrussell's oh-my-zsh).</span>
+<span class="token comment" spellcheck="true"># 加载原版oh-my-zsh中的功能(robbyrussell's oh-my-zsh).</span>
 antigen bundle <span class="token function">git</span>
 antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
 
-<span class="token comment"># 语法高亮功能</span>
+<span class="token comment" spellcheck="true"># 语法高亮功能</span>
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-<span class="token comment"># 代码提示功能</span>
+<span class="token comment" spellcheck="true"># 代码提示功能</span>
 antigen bundle zsh-users/zsh-autosuggestions
 
-<span class="token comment"># 自动补全功能</span>
+<span class="token comment" spellcheck="true"># 自动补全功能</span>
 antigen bundle zsh-users/zsh-completions
 
-<span class="token comment"># 加载主题</span>
-<span class="token comment">#antigen theme robbyrussell</span>
+<span class="token comment" spellcheck="true"># 加载主题</span>
+<span class="token comment" spellcheck="true">#antigen theme robbyrussell</span>
 antigen theme romkatv/powerlevel10k
 
-<span class="token comment"># 保存更改</span>
+<span class="token comment" spellcheck="true"># 保存更改</span>
 antigen apply
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用别名alias"><a href="#使用别名alias" class="headerlink" title="使用别名alias"></a>使用别名alias</h2><ol>
 <li><p>确保<code>.bashrc</code>中有这一段：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Alias definitions.</span>
-<span class="token comment"># You may want to put all your additions into a separate file like</span>
-<span class="token comment"># ~/.bash_aliases, instead of adding them here directly.</span>
-<span class="token comment"># See /usr/share/doc/bash-doc/examples in the bash-doc package.</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Alias definitions.</span>
+<span class="token comment" spellcheck="true"># You may want to put all your additions into a separate file like</span>
+<span class="token comment" spellcheck="true"># ~/.bash_aliases, instead of adding them here directly.</span>
+<span class="token comment" spellcheck="true"># See /usr/share/doc/bash-doc/examples in the bash-doc package.</span>
 
 <span class="token keyword">if</span> <span class="token punctuation">[</span> -f ~/.bash_aliases <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-    <span class="token builtin class-name">.</span> ~/.bash_aliases
-<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+    <span class="token keyword">.</span> ~/.bash_aliases
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>编辑<code>~/.bash_aliases</code></p>
 <blockquote>
 <p>没有就自己创建</p>
 </blockquote>
 <p>比如：写上</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">alias</span> <span class="token assign-left variable">nvrun</span><span class="token operator">=</span><span class="token string">"__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">alias</span> nvrun<span class="token operator">=</span><span class="token string">"__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>检查成功</p>
 </li>
 </ol>
@@ -997,11 +1004,10 @@ antigen apply
 </blockquote>
 <ol>
 <li><p>添加别名</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">alias</span> <span class="token assign-left variable">nvrun</span><span class="token operator">=</span><span class="token string">"__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">alias</span> nvrun<span class="token operator">=</span><span class="token string">"__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>使用</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nvrun steam<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
+<pre class="line-numbers language-bash"><code class="language-bash">nvrun steam<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
 <h2 id="steam-play-玩游戏时使用独显"><a href="#steam-play-玩游戏时使用独显" class="headerlink" title="steam play 玩游戏时使用独显"></a>steam play 玩游戏时使用独显</h2><p>游戏启动项加上<code>WINEDLLOVERRIDES="dxgi=n" %command%</code>这句</p>
@@ -1606,6 +1612,38 @@ $(function () {
         
 
         <!-- 在线聊天工具  洪卫 shw2018 add 2019.09.11 -->
+        
+            <script src="//code.tidio.co/xxxxxxxxxxxxxxxxxxxxxxxxxxx.js"></script>
+            <!--  在线聊天位置自定义  洪卫 shw2018 add 2019.09.13  -->
+            <script> 
+                $(document).ready(function () {
+
+                    setInterval(change_Tidio, 50);  
+                    function change_Tidio() { 
+
+                        var tidio=$("#tidio-chat iframe");
+                        if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"80px":"20px";   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                            document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        } 
+                        else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+                        else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+
+                        if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                            document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                        }
+                    } 
+                }); 
+            </script>
         
 
         <!-- 背景 canvas-nest  洪卫 shw 2018  add 2019.09.15-->

@@ -81,7 +81,8 @@ cd - 在当前目录和上一个目录之间切换
 <meta name="generator" content="Hexo 5.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="布菜克先生的博客" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
     <body>
 
@@ -620,19 +621,20 @@ cd - 在当前目录和上一个目录之间切换
 <h2 id="1-1-基础命令"><a href="#1-1-基础命令" class="headerlink" title="1.1 基础命令"></a>1.1 基础命令</h2><ul>
 <li><p><code>cd</code> 命令</p>
 <p><code>cd -</code> 在当前目录和上一个目录之间切换</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">❯ <span class="token builtin class-name">cd</span> /etc/nginx
-❯ <span class="token builtin class-name">cd</span> ~/my_code
-❯ <span class="token builtin class-name">cd</span> -
+<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cd</span> /etc/nginx
+❯ <span class="token function">cd</span> ~/my_code
+❯ <span class="token function">cd</span> -
 /etc/nginx
-❯ <span class="token builtin class-name">pwd</span>
+❯ <span class="token function">pwd</span>
 /etc/nginx
-❯ <span class="token builtin class-name">cd</span> -
+❯ <span class="token function">cd</span> -
 ~/my_code
-❯ <span class="token builtin class-name">pwd</span>
-/home/black/my_code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+❯ <span class="token function">pwd</span>
+/home/black/my_code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p><code>ls</code>命令</p>
 <p><code>ls -R</code> 递归显示当前目录下文件和文件夹</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">❯ <span class="token builtin class-name">cd</span> Downloads
+<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cd</span> Downloads
 ❯ <span class="token function">ls</span> -R
 .:
 Compressed  Documents  Music  Programs  Video
@@ -650,9 +652,9 @@ code-server_3.8.0_amd64.deb
 
 ./Video:
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="1-2-文件和用户"><a href="#1-2-文件和用户" class="headerlink" title="1.2 文件和用户"></a>1.2 文件和用户</h2></li>
+</li>
 </ul>
-<table>
+<h2 id="1-2-文件和用户"><a href="#1-2-文件和用户" class="headerlink" title="1.2 文件和用户"></a>1.2 文件和用户</h2><table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -690,7 +692,7 @@ code-server_3.8.0_amd64.deb
 </tbody></table>
 <ul>
 <li><p><code>chmod</code>命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token punctuation">[</span>who<span class="token punctuation">]</span> <span class="token punctuation">[</span>+<span class="token operator">|</span>-<span class="token operator">|</span><span class="token operator">=</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>mode<span class="token punctuation">]</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token punctuation">[</span>who<span class="token punctuation">]</span> <span class="token punctuation">[</span>+<span class="token operator">|</span>-<span class="token operator">|</span><span class="token operator">=</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>mode<span class="token punctuation">]</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>who</code>可以是下面字母中的任意一个或者他们的组合：</p>
 <ul>
 <li>u : 表示用户，即文件或目录的所有者</li>
@@ -717,22 +719,26 @@ code-server_3.8.0_amd64.deb
 <li><code>-j</code>：使用<code>bzip2</code>方式压缩</li>
 </ul>
 <p>常用创建压缩文件的命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -zcvf compress.tar.gz file1 file2 dir1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -zcvf compress.tar.gz file1 file2 dir1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>常用解压缩文件命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -jcvf compress.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -jcvf compress.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p><code>rar</code>和<code>unrar</code></p>
 <p>压缩文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">rar</span> a -r compress.rar file1 dir2 file2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rar</span> a -r compress.rar file1 dir2 file2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>解压文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unrar</span> x compress.rar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">unrar</span> x compress.rar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p><code>zip</code>和<code>unzip</code></p>
 <p>压缩文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> -r compress.zip file1 dir1 file3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">zip</span> -r compress.zip file1 dir1 file3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>解压缩文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> compress.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="1-3-搜索"><a href="#1-3-搜索" class="headerlink" title="1.3 搜索"></a>1.3 搜索</h2></li>
+<pre class="line-numbers language-bash"><code class="language-bash">unzip compress.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="1-3-搜索"><a href="#1-3-搜索" class="headerlink" title="1.3 搜索"></a>1.3 搜索</h2><ul>
 <li><p><code>chown</code>命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chown</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">]</span> <span class="token punctuation">..</span>. <span class="token punctuation">[</span>OWNER:GROUP<span class="token punctuation">]</span> FILE <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chown</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">]</span> <span class="token punctuation">..</span>. <span class="token punctuation">[</span>OWNER:GROUP<span class="token punctuation">]</span> FILE <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>OPTION</code> 的主要参数：</p>
 <ul>
 <li>-R：递归地改变指定目录及其下的所有子目录和文件的拥有者。</li>
@@ -740,7 +746,7 @@ code-server_3.8.0_amd64.deb
 </ul>
 </li>
 <li><p><code>find</code>命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token punctuation">[</span>PATHNAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>-OPTIONS: -print -exec -ok -name -type <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> <span class="token punctuation">[</span>PATHNAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>-OPTIONS: -print -exec -ok -name -type <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><code>-name</code> ：按文件名搜索</li>
 <li><code>-maxdepth</code>：指定搜索深度</li>
@@ -749,64 +755,67 @@ code-server_3.8.0_amd64.deb
 <li><code>-type</code>：按文件类型搜索。d/p/s/c/b/l/f(文件)</li>
 </ul>
 <p>扩展</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> /usr/ -name <span class="token string">'*tmp*'</span> -exec <span class="token function">rm</span> -r <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
-<span class="token function">find</span> /usr/ -name <span class="token string">'*tmp*'</span> -ok <span class="token function">rm</span> -r <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">\</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> /usr/ -name <span class="token string">'*tmp*'</span> -exec <span class="token function">rm</span> -r <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span>
+<span class="token function">find</span> /usr/ -name <span class="token string">'*tmp*'</span> -ok <span class="token function">rm</span> -r <span class="token punctuation">[</span><span class="token punctuation">]</span> \<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如果查找的文件名中有空格，同时又想利用<code>xargs</code>管道的话：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> ./ <span class="token builtin class-name">type</span> f print0 <span class="token operator">|</span> <span class="token function">xargs</span> -0 <span class="token function">ls</span> -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> ./ <span class="token function">type</span> f print0 <span class="token operator">|</span> <span class="token function">xargs</span> -0 <span class="token function">ls</span> -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><code>grep</code> 命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">grep</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> PATTERN <span class="token punctuation">[</span>FILE<span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">grep</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> PATTERN <span class="token punctuation">[</span>FILE<span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>-r</code>：递归搜索</p>
 <p><code>-n</code>：显示行号</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">❯ <span class="token function">cat</span> abc
+<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cat</span> abc
 kkfdasjfklasfj
 hello<span class="token operator">!</span> world
 dfasjfklasnflk
-<span class="token number">2131312</span>
+2131312
 ❯ <span class="token function">grep</span> <span class="token string">"hello\!"</span> ./ -rn
-./abc:2:hello<span class="token operator">!</span> world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+./abc:2:hello<span class="token operator">!</span> world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p><code>xargs</code></p>
 <p>有时后面的命令不接受管道，此时可以添加<code>xargs</code>实现。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">❯ <span class="token function">ls</span> -l
-总用量 <span class="token number">108</span>
--rw-r--r-- <span class="token number">1</span> black black    <span class="token number">51</span>  <span class="token number">1</span>月 <span class="token number">20</span> <span class="token number">15</span>:58 abc
--rw-r--r-- <span class="token number">1</span> black black <span class="token number">98571</span>  <span class="token number">1</span>月 <span class="token number">14</span> <span class="token number">12</span>:05 blog.WordPress.2021-01-14.xml
-drwxr-xr-x <span class="token number">2</span> black black  <span class="token number">4096</span>  <span class="token number">1</span>月 <span class="token number">20</span> <span class="token number">16</span>:01 temp
+<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">ls</span> -l
+总用量 108
+-rw-r--r-- 1 black black    51  1月 20 15:58 abc
+-rw-r--r-- 1 black black 98571  1月 14 12:05 blog.WordPress.2021-01-14.xml
+drwxr-xr-x 2 black black  4096  1月 20 16:01 temp
 ❯ <span class="token function">find</span> ./ -type f <span class="token operator">|</span> <span class="token function">ls</span> -l
-总用量 <span class="token number">108</span>
--rw-r--r-- <span class="token number">1</span> black black    <span class="token number">51</span>  <span class="token number">1</span>月 <span class="token number">20</span> <span class="token number">15</span>:58 abc
--rw-r--r-- <span class="token number">1</span> black black <span class="token number">98571</span>  <span class="token number">1</span>月 <span class="token number">14</span> <span class="token number">12</span>:05 blog.WordPress.2021-01-14.xml
-drwxr-xr-x <span class="token number">2</span> black black  <span class="token number">4096</span>  <span class="token number">1</span>月 <span class="token number">20</span> <span class="token number">16</span>:01 temp
+总用量 108
+-rw-r--r-- 1 black black    51  1月 20 15:58 abc
+-rw-r--r-- 1 black black 98571  1月 14 12:05 blog.WordPress.2021-01-14.xml
+drwxr-xr-x 2 black black  4096  1月 20 16:01 temp
 ❯ <span class="token function">find</span> ./ -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">ls</span> -l
--rw-r--r-- <span class="token number">1</span> black black    <span class="token number">51</span>  <span class="token number">1</span>月 <span class="token number">20</span> <span class="token number">15</span>:58 ./abc
--rw-r--r-- <span class="token number">1</span> black black <span class="token number">98571</span>  <span class="token number">1</span>月 <span class="token number">14</span> <span class="token number">12</span>:05 ./blog.WordPress.2021-01-14.xml
+-rw-r--r-- 1 black black    51  1月 20 15:58 ./abc
+-rw-r--r-- 1 black black 98571  1月 14 12:05 ./blog.WordPress.2021-01-14.xml
 ❯ <span class="token function">find</span> ./ -type f <span class="token operator">|</span> <span class="token function">grep</span> ab
 ./abc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="1-4-GCC补充知识"><a href="#1-4-GCC补充知识" class="headerlink" title="1.4 GCC补充知识"></a>1.4 <code>GCC</code>补充知识</h2></li>
+</li>
+</ul>
+<h2 id="1-4-GCC补充知识"><a href="#1-4-GCC补充知识" class="headerlink" title="1.4 GCC补充知识"></a>1.4 <code>GCC</code>补充知识</h2><ul>
 <li><p><code>gcc</code>编译可执行程序的步骤：</p>
 <p><img src="https://i.loli.net/2021/05/09/bhCnOsjJ7qdGy5V.png" alt="1.4_1"></p>
 </li>
 <li><p><code>gcc</code>常用参数：</p>
 <ul>
 <li><p><code>-I [directory]</code>：指定头文件目录。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">❯ <span class="token function">cat</span> hello.c
-<span class="token comment">#include&lt;hello.h&gt;</span>
-int <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                printf<span class="token punctuation">(</span><span class="token string">"nihao<span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cat</span> hello.c
+<span class="token comment" spellcheck="true">#include&lt;hello.h></span>
+int main<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                printf<span class="token punctuation">(</span><span class="token string">"nihao\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> 0<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 ❯ <span class="token function">cat</span> inc/hello.h
-<span class="token comment">#include&lt;stdio.h&gt;</span>
+<span class="token comment" spellcheck="true">#include&lt;stdio.h></span>
 ❯ gcc hello.c -o hello
 hello.c:1:9: 致命错误：hello.h：没有那个文件或目录
-    <span class="token number">1</span> <span class="token operator">|</span> <span class="token comment">#include&lt;hello.h&gt;</span>
+    1 <span class="token operator">|</span> <span class="token comment" spellcheck="true">#include&lt;hello.h></span>
       <span class="token operator">|</span>         ^~~~~~~~~
 编译中断。
 ❯ gcc hello.c -o hello -I ./inc/
 ❯ ./hello
 nihao
-❯<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+❯<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p><code>-c</code>：只做预处理、编译、汇编操作，生成<code>.o</code>二进制文件，不进行链接</p>
 </li>
 <li><p><code>-g</code>：包含调试信息</p>
@@ -833,13 +842,14 @@ nihao
 <li><code>fg</code>切换到前台</li>
 </ul>
 <p>示例如下：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">❯ kolourpaint <span class="token operator">&amp;</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">481488</span>
+<pre class="line-numbers language-bash"><code class="language-bash">❯ kolourpaint <span class="token operator">&amp;</span>
+<span class="token punctuation">[</span>1<span class="token punctuation">]</span> 481488
 ❯ <span class="token function">jobs</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  + running    kolourpaint
+<span class="token punctuation">[</span>1<span class="token punctuation">]</span>  + running    kolourpaint
 ❯ <span class="token function">fg</span> kolourpaint
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  + <span class="token number">483544</span> running    kolourpaint
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token punctuation">[</span>1<span class="token punctuation">]</span>  + 483544 running    kolourpaint
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p><code>man</code></p>
 <p>使用中需要注意的一点是，有很多重名的函数，比如<code>shell</code>编程中和<code>c</code>语言中都有<code>prinrf</code>这个函数，直接使用<code>man printf</code>可能不是我们想要的信息，因此需要注意章节信息。</p>
 <ul>
@@ -853,7 +863,7 @@ nihao
 </li>
 </ul>
 <p>附章节信息如下（可通过<code>man man</code>查看）：</p>
-<pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">1  可执行程序或 shell 命令 
+<pre class="line-numbers language-tex"><code class="language-tex">1  可执行程序或 shell 命令 
 2  系统调用(内核提供的函数) 
 3  库调用(程序库中的函数) 
 4  特殊文件(通常位于 /dev) 
@@ -862,7 +872,6 @@ nihao
 7  杂项(包括宏包和规范，如 **man**(7)，**groff**(7)) 
 8  系统管理命令(通常只针对 root 用户) 
 9  内核例程 [非标准<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 </li>
 </ul>
 <h2 id="1-6-vim的实用补充："><a href="#1-6-vim的实用补充：" class="headerlink" title="1.6 vim的实用补充："></a>1.6 <code>vim</code>的实用补充：</h2><ul>
@@ -1508,6 +1517,38 @@ $(function () {
         
 
         <!-- 在线聊天工具  洪卫 shw2018 add 2019.09.11 -->
+        
+            <script src="//code.tidio.co/xxxxxxxxxxxxxxxxxxxxxxxxxxx.js"></script>
+            <!--  在线聊天位置自定义  洪卫 shw2018 add 2019.09.13  -->
+            <script> 
+                $(document).ready(function () {
+
+                    setInterval(change_Tidio, 50);  
+                    function change_Tidio() { 
+
+                        var tidio=$("#tidio-chat iframe");
+                        if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"80px":"20px";   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                            document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        } 
+                        else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+                        else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+
+                        if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                            document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                        }
+                    } 
+                }); 
+            </script>
         
 
         <!-- 背景 canvas-nest  洪卫 shw 2018  add 2019.09.15-->
