@@ -587,14 +587,14 @@ black@black-OMEN:~$ neofetch
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.2k
+                        3.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        13 分
+                        14 分
                     </div>
                     
                 
@@ -1011,6 +1011,31 @@ antigen apply
 </li>
 </ol>
 <h2 id="steam-play-玩游戏时使用独显"><a href="#steam-play-玩游戏时使用独显" class="headerlink" title="steam play 玩游戏时使用独显"></a>steam play 玩游戏时使用独显</h2><p>游戏启动项加上<code>WINEDLLOVERRIDES="dxgi=n" %command%</code>这句</p>
+<h2 id="终端显示彩色emoji"><a href="#终端显示彩色emoji" class="headerlink" title="终端显示彩色emoji"></a>终端显示彩色emoji</h2><h3 id="Choose-font"><a href="#Choose-font" class="headerlink" title="Choose font"></a>Choose font</h3><p>First of all, you need to choose a font. I prefer <a target="_blank" rel="noopener" href="https://www.google.com/get/noto/#emoji-zsye-color">Noto Color Emoji</a>, which is a font used to display emojis on Android. The font was <a target="_blank" rel="noopener" href="https://github.com/googlei18n/noto-emoji/commit/91dc393ca4f4a924f4f6b06bf8e4407b30c7bdd9">recently updated</a> with <a target="_blank" rel="noopener" href="https://medium.com/google-design/redesigning-android-emoji-cb22e3b51cc6">normal faces</a> instead of old controversial blobs. But if you’ve been using Android since ages and like those, you always can install an older version of the same font. An alternative option would be an <a target="_blank" rel="noopener" href="https://www.emojione.com/">Emoji One font</a>, which is also good, especially its third version.</p>
+<h3 id="Tell-system-you-prefer-this-font-to-render-emoji"><a href="#Tell-system-you-prefer-this-font-to-render-emoji" class="headerlink" title="Tell system you prefer this font to render emoji"></a>Tell system you prefer this font to render emoji</h3><p>Next, you need to create a file <code>~/.config/fontconfig/fonts.conf</code> with following content:</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token doctype">&lt;!DOCTYPE fontconfig SYSTEM "fonts.dtd"></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fontconfig</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>alias</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>family</span><span class="token punctuation">></span></span>serif<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>family</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>prefer</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>family</span><span class="token punctuation">></span></span>Noto Color Emoji<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>family</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>prefer</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>alias</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>alias</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>family</span><span class="token punctuation">></span></span>sans-serif<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>family</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>prefer</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>family</span><span class="token punctuation">></span></span>Noto Color Emoji<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>family</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>prefer</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>alias</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>alias</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>family</span><span class="token punctuation">></span></span>monospace<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>family</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>prefer</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>family</span><span class="token punctuation">></span></span>Noto Color Emoji<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>family</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>prefer</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>alias</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fontconfig</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>To apply new configuration, run <code>fc-cache -f -v</code> in Terminal.</p>
 
             </div>
             <hr/>
@@ -1457,7 +1482,7 @@ black@black-OMEN:~$ neofetch
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">25.3k</span> 字
+                <span class="white-color">25.5k</span> 字
             
 
             
