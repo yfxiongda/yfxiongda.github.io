@@ -628,3 +628,4 @@ Next, you need to create a file `~/.config/fontconfig/fonts.conf` with following
 ```
 
 To apply new configuration, run `fc-cache -f -v` in Terminal.
+
