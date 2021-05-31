@@ -590,3 +590,41 @@ antigen apply
 
 游戏启动项加上`WINEDLLOVERRIDES="dxgi=n" %command%`这句
 
+
+
+## 终端显示彩色emoji
+
+### Choose font
+
+First of all, you need to choose a font. I prefer [Noto Color Emoji](https://www.google.com/get/noto/#emoji-zsye-color), which is a font used to display emojis on Android. The font was [recently updated](https://github.com/googlei18n/noto-emoji/commit/91dc393ca4f4a924f4f6b06bf8e4407b30c7bdd9) with [normal faces](https://medium.com/google-design/redesigning-android-emoji-cb22e3b51cc6) instead of old controversial blobs. But if you’ve been using Android since ages and like those, you always can install an older version of the same font. An alternative option would be an [Emoji One font](https://www.emojione.com/), which is also good, especially its third version.
+
+### Tell system you prefer this font to render emoji
+
+Next, you need to create a file `~/.config/fontconfig/fonts.conf` with following content:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <alias>
+    <family>serif</family>
+    <prefer>
+      <family>Noto Color Emoji</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>sans-serif</family>
+    <prefer>
+      <family>Noto Color Emoji</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>monospace</family>
+    <prefer>
+      <family>Noto Color Emoji</family>
+    </prefer>
+  </alias>
+</fontconfig>
+```
+
+To apply new configuration, run `fc-cache -f -v` in Terminal.
