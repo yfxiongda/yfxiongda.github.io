@@ -6,7 +6,7 @@
   <link href="http://yfxiongda.github.io/atom.xml" rel="self"/>
   
   <link href="http://yfxiongda.github.io/"/>
-  <updated>2021-05-19T02:06:34.729Z</updated>
+  <updated>2021-07-11T03:24:48.137Z</updated>
   <id>http://yfxiongda.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux终端实用技巧</title>
+    <link href="http://yfxiongda.github.io/2021/07/11/Linux%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yfxiongda.github.io/2021/07/11/Linux%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</id>
+    <published>2021-07-11T00:06:56.000Z</published>
+    <updated>2021-07-11T03:24:48.137Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Linux终端实用技巧&quot;&gt;&lt;a href=&quot;#Linux终端实用技巧&quot; class=&quot;headerlink&quot; title=&quot;Linux终端实用技巧&quot;&gt;&lt;/a&gt;Linux终端实用技巧&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;转载自：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="http://yfxiongda.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Linux 终端" scheme="http://yfxiongda.github.io/tags/Linux-%E7%BB%88%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA基础学习</title>
@@ -102,7 +128,7 @@
     <link href="http://yfxiongda.github.io/2021/05/08/Docker%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/"/>
     <id>http://yfxiongda.github.io/2021/05/08/Docker%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/</id>
     <published>2021-05-08T06:06:48.000Z</published>
-    <updated>2021-05-10T01:26:53.200Z</updated>
+    <updated>2021-07-11T03:18:43.149Z</updated>
     
     
       
@@ -130,7 +156,7 @@
     <link href="http://yfxiongda.github.io/2021/05/08/Ubuntu20-04%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"/>
     <id>http://yfxiongda.github.io/2021/05/08/Ubuntu20-04%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</id>
     <published>2021-05-08T02:56:03.000Z</published>
-    <updated>2021-05-31T04:36:04.030Z</updated>
+    <updated>2021-07-11T03:27:59.588Z</updated>
     
     
       

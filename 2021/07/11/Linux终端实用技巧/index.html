@@ -6,12 +6,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu部署lamp环境, 布菜克先生的博客">
+    <meta name="keywords" content="Linux终端实用技巧, 布菜克先生的博客">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY" />
-    <meta name="description" content="Ubuntu20.04安装lamp基础环境我的设备：black@black-OMEN:~$ neofetch
-            .-/+oossssoo+/-.               black@black-OMEN 
-    ">
+    <meta name="description" content="Linux终端实用技巧
+转载自：微信公众号：Linux网络安全，此处做了补充和修改。
+
+1. 快速清空文件方法快速清空一个文件，有 N 种方法，我比较喜欢下边这种，因为它最短
+$ &gt; access.log
+^C
+不过瘾？好吧，我也顺便总结下">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Ubuntu部署lamp环境 | 布菜克先生的博客</title>
+    <title>Linux终端实用技巧 | 布菜克先生的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -425,13 +429,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/05/08/GfvLj2Ubxpz6P47.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/07/11/hzHBpcGPbx43jaL.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Ubuntu部署lamp环境
+                        Linux终端实用技巧
                     </div>
                 </div>
             </div>
@@ -543,12 +547,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/" target="_blank">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/LAMP/" target="_blank">
-                                <span class="chip bg-color">LAMP</span>
+                            <a href="/tags/Linux-%E7%BB%88%E7%AB%AF/" target="_blank">
+                                <span class="chip bg-color">Linux 终端</span>
                             </a>
                         
                     </div>
@@ -571,7 +571,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-08
+                    2021-07-11
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -585,14 +585,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        812
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        6 分
                     </div>
                     
                 
@@ -609,125 +609,102 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Ubuntu20-04安装lamp基础环境"><a href="#Ubuntu20-04安装lamp基础环境" class="headerlink" title="Ubuntu20.04安装lamp基础环境"></a>Ubuntu20.04安装lamp基础环境</h1><h2 id="我的设备："><a href="#我的设备：" class="headerlink" title="我的设备："></a>我的设备：</h2><pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ neofetch
-            .-/+oossssoo+/-.               black@black-OMEN 
-        <span class="token variable"><span class="token variable">`</span>:+ssssssssssssssssss+:<span class="token variable">`</span></span>           ---------------- 
-      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.04 LTS x86_64 
-    .ossssssssssssssssssdMMMNysssso.       Host: OMEN by HP Laptop 
-   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.4.0-40-generic 
-  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 1 hour, 58 mins 
- /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 1637 <span class="token punctuation">(</span>dpkg<span class="token punctuation">)</span>, 11 <span class="token punctuation">(</span>snap<span class="token punctuation">)</span> 
-.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: <span class="token function">bash</span> 5.0.16 
-+sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1920x1080 
-ossyNMMMNyMMhsssssssssssssshmmmhssssssso   DE: GNOME 
-ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter 
-+sssshhhyNMMNyssssssssssssyNMMMysssssss+   WM Theme: Adwaita 
-.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Theme: Yaru-dark <span class="token punctuation">[</span>GTK2/3<span class="token punctuation">]</span> 
- /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    Icons: Yaru <span class="token punctuation">[</span>GTK2/3<span class="token punctuation">]</span> 
-  +sssssssssdmydMMMMMMMMddddyssssssss+     Terminal: gnome-terminal 
-   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: Intel i5-7300HQ <span class="token punctuation">(</span>4<span class="token punctuation">)</span> @ 3.500GHz 
-    .ossssssssssssssssssdMMMNysssso.       GPU: Intel HD Graphics 630 
-      -+sssssssssssssssssyyyssss+-         GPU: NVIDIA GeForce GTX 1050 Mobile 
-        <span class="token variable"><span class="token variable">`</span>:+ssssssssssssssssss+:<span class="token variable">`</span></span>           Memory: 2511MiB / 11867MiB 
-            .-/+oossssoo+/-.
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="安装php-php-fpm-apache2-Nginx-mariadb-server"><a href="#安装php-php-fpm-apache2-Nginx-mariadb-server" class="headerlink" title="安装php, php-fpm, apache2(Nginx), mariadb-server"></a>安装php, php-fpm, apache2(Nginx), mariadb-server</h2><pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> apt <span class="token function">install</span> php php-fpm apache2 mariadb-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="配置mariadb-server"><a href="#配置mariadb-server" class="headerlink" title="配置mariadb-server"></a>配置mariadb-server</h3><ul>
-<li><p>注意 <strong>root</strong> 运行</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> mysql_secure_installation
-<span class="token comment" spellcheck="true"># 首先会让你输入密码，因为是初次安装，所以直接回车即可</span>
-<span class="token comment" spellcheck="true"># 然后会让你设置root密码，并确认</span>
-<span class="token comment" spellcheck="true"># 之后的，一路回车即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此处不 <strong>root</strong> 运行<code>mysql_secure_installation</code>是会说你密码错误的。</p>
-</li>
-<li><p>运行服务</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> mariadb restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>进入试试：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> mysql -u root -p
-Enter password: 
-Welcome to the MariaDB monitor.  Commands end with <span class="token punctuation">;</span> or \g.
-Your MariaDB connection <span class="token function">id</span> is 60
-Server version: 10.3.22-MariaDB-1ubuntu1 Ubuntu 20.04
-
-Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
-
-Type <span class="token string">'help;'</span> or <span class="token string">'\h'</span> <span class="token keyword">for</span> help. Type <span class="token string">'\c'</span> to <span class="token function">clear</span> the current input statement.
-
-MariaDB <span class="token punctuation">[</span><span class="token punctuation">(</span>none<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">></span> show databases<span class="token punctuation">;</span>
-+--------------------+
-<span class="token operator">|</span> Database           <span class="token operator">|</span>
-+--------------------+
-<span class="token operator">|</span> information_schema <span class="token operator">|</span>
-<span class="token operator">|</span> mysql              <span class="token operator">|</span>
-<span class="token operator">|</span> performance_schema <span class="token operator">|</span>
-+--------------------+
-3 rows <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.001 sec<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>至此成功。</p>
-</li>
+                <h1 id="Linux终端实用技巧"><a href="#Linux终端实用技巧" class="headerlink" title="Linux终端实用技巧"></a>Linux终端实用技巧</h1><blockquote>
+<p>转载自：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ZaugCxaD6kPT-fbW9rSaIQ">微信公众号：Linux网络安全</a>，此处做了补充和修改。</p>
+</blockquote>
+<h2 id="1-快速清空文件方法"><a href="#1-快速清空文件方法" class="headerlink" title="1. 快速清空文件方法"></a>1. 快速清空文件方法</h2><p>快速清空一个文件，有 N 种方法，我比较喜欢下边这种，因为它最短</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token operator">></span> access.log
+^C<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>不过瘾？好吧，我也顺便总结下，其它几种最常见的清空文件的方法</p>
+<ul>
+<li><code>: &gt; access.log</code></li>
+<li><code>true &gt; access.log</code></li>
+<li><code>cat /dev/null &gt; access.log</code></li>
+<li><code>echo -n "" &gt; access.log</code></li>
+<li><code>echo &gt; access.log</code></li>
+<li><code>truncate -s 0 access.log</code></li>
 </ul>
-<h3 id="配置apache2和php-fpm"><a href="#配置apache2和php-fpm" class="headerlink" title="配置apache2和php-fpm"></a>配置apache2和php-fpm</h3><ul>
-<li><p>首先停止这两个的服务</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> apache2 stop
-black@black-OMEN:~$ <span class="token function">sudo</span> <span class="token function">service</span> php7.4-fpm stop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>编辑apache2配置文件</p>
-<p>首先看下目录结构：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:~$ <span class="token function">cd</span> /etc/apache2/
-black@black-OMEN:/etc/apache2$ <span class="token function">ls</span>
-apache2.conf  conf-available  conf-enabled  envvars  magic  mods-available  mods-enabled  ports.conf  sites-available  sites-enabled
-black@black-OMEN:/etc/apache2$ tree conf-available/
-conf-available/
-├── charset.conf
-├── localized-error-pages.conf
-├── other-vhosts-access-log.conf
-├── php7.4-fpm.conf
-├── security.conf
-└── serve-cgi-bin.conf
-
-0 directories, 6 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由上面可以看到，在<code>conf-available</code>中已经有配置好的文件。那怎么让它生效呢？看下<code>conf-enabled</code>目录结构：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:/etc/apache2$ tree conf-enabled/
-conf-enabled/
-├── charset.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/charset.conf
-├── localized-error-pages.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/localized-error-pages.conf
-├── other-vhosts-access-log.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/other-vhosts-access-log.conf
-├── security.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/security.conf
-└── serve-cgi-bin.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/serve-cgi-bin.conf
-
-0 directories, 5 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由此可发现，实际上<code>conf-enabled</code>就是<code>conf-available</code>里的软连接，因此，<strong>我们只需要在<code>conf-enabled</code>里创建<code>conf-available/php7.4-fpm.conf</code>的软链接即可</strong>。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:/etc/apache2$ <span class="token function">cd</span> conf-enabled/
-black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">ln</span> -s <span class="token punctuation">..</span>/conf-available/php7.4-fpm.conf 
-<span class="token comment" spellcheck="true"># 此时查看enabled情况，发现已经被添加到了。</span>
-black@black-OMEN:/etc/apache2/conf-enabled$ tree <span class="token keyword">.</span>
-<span class="token keyword">.</span>
-├── charset.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/charset.conf
-├── localized-error-pages.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/localized-error-pages.conf
-├── other-vhosts-access-log.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/other-vhosts-access-log.conf
-├── php7.4-fpm.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/php7.4-fpm.conf
-├── security.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/security.conf
-└── serve-cgi-bin.conf -<span class="token operator">></span> <span class="token punctuation">..</span>/conf-available/serve-cgi-bin.conf
-
-0 directories, 6 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>注意：</strong>因为我这里装的正好就是<code>php7.4-fpm</code>，而且是通过<code>apt</code>装的，所以使用默认即可，如果你不是用的默认的，则还需要修改下<code>php7.4-fpm.conf</code>中的参数。</p>
-</li>
-<li><p>重启服务，测试</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动服务</span>
-black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">service</span> apache2 restart
-black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> <span class="token function">service</span> php7.4-fpm restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>测试<code>html</code></p>
-<pre><code>black@black-OMEN:/etc/apache2/conf-enabled$ sudo vim /var/www/html/test.html</code></pre>
-<p>此时若访问<a href="localhost/test.html">localhost/test.html</a>配置即完成。</p>
-<p>测试<code>.php</code></p>
-<pre class="line-numbers language-bash"><code class="language-bash">black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</span> vim /var/www/html/test.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>写入：</p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-    <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>此时若访问<a href="localhost/test.php">localhost/test.php</a>配置即完成。</p>
-</li>
+<p>简单解释下， <code>:</code> 在 shell 中是一个内置命令，表示 <code>no-op</code>，大概就是空语句的意思，所以 <code>:</code> 的那个用法，就是执行命令后，什么都没有输出，将空内容覆盖到文件。</p>
+<h2 id="2-快速生成大文件"><a href="#2-快速生成大文件" class="headerlink" title="2. 快速生成大文件"></a>2. 快速生成大文件</h2><p>有时候，在 Linux 上，我们需要一个大文件，用于测试上传或下载的速度，通过 <code>dd</code> 命令可以快速生成一个大文件</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">dd</span> if<span class="token operator">=</span>/dev/zero of<span class="token operator">=</span>file.img bs<span class="token operator">=</span>1M count<span class="token operator">=</span>1024<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>上述命令，生成一个文件名为 file.img 大小为 1G 的文件。</p>
+<h2 id="3-安全擦除硬盘数据"><a href="#3-安全擦除硬盘数据" class="headerlink" title="3. 安全擦除硬盘数据"></a>3. 安全擦除硬盘数据</h2><p>介绍一种擦除硬盘数据的方法，高效，安全。可以通过 <code>dd</code> 命令，轻松实现：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">dd</span> if<span class="token operator">=</span>/dev/urandom of<span class="token operator">=</span>/dev/sda<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用 <code>/dev/urandom</code> 生成随机数据，将生成的数据写入 <code>sda</code> 硬盘中，相当于安全的擦除了硬盘数据。</p>
+<p>当年陈老师，如果学会了这条命令，可能也不会有艳兆门事件了。</p>
+<h2 id="4-快速制作系统盘"><a href="#4-快速制作系统盘" class="headerlink" title="4. 快速制作系统盘"></a>4. 快速制作系统盘</h2><p>在 Linux 下制作系统盘，老毛桃神么工具都弱爆了，直接一条命令搞定：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">dd</span> if<span class="token operator">=</span>ubuntu-server-amd64.iso of<span class="token operator">=</span>/dev/sdb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>哈哈，是不是很爽，<code>sdb</code> 可以 U 盘，也可以是普通硬盘</p>
+<h2 id="5-查看某个进程的运行时间"><a href="#5-查看某个进程的运行时间" class="headerlink" title="5. 查看某个进程的运行时间"></a>5. 查看某个进程的运行时间</h2><p>可能，大部分同学只会使用 <code>ps aux</code>，其实可以通过 <code>-o</code> 参数，指定只显示具体的某个字段，会得到更清晰的结果。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">ps</span> -p 10167 -o etimes,etime
+ELAPSED     ELAPSED
+1712055 19-19:34:15<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>通过 <code>etime</code> 获取该进程的运行时间，可以很直观地看到，进程运行了 19 天</p>
+<p>同样，可以通过 <code>-o</code> 指定 <code>rss</code> 可以只获取该进程的内存信息。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">ps</span> -p 10167 -o rss
+  RSS
+ 2180<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="6-动态实时查看日志"><a href="#6-动态实时查看日志" class="headerlink" title="6. 动态实时查看日志"></a>6. 动态实时查看日志</h2><p>通过 <code>tail</code> 命令 <code>-f</code> 选项，可以动态地监控日志文件的变化，非常实用</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">tail</span> -f test.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果想在日志中出现 <code>Failed</code> 等信息时立刻停止 tail 监控，可以通过如下命令来实现：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">tail</span> -f test.log <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'/Failed/ q'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="7-时间戳的快速转换"><a href="#7-时间戳的快速转换" class="headerlink" title="7. 时间戳的快速转换"></a>7. 时间戳的快速转换</h2><p>时间操作，对程序员来说就是家常便饭。有时候希望能够将时间戳，转换为日期时间，在 Linux 命令行上，也可以快速的进行转换：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">date</span> -d@1234567890 +<span class="token string">"%Y-%m-%d %H:%M:%S"</span>
+2009-02-14 07:31:30<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>当然，也可以在命令行上，查看当前的时间戳</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">date</span> +%s
+1617514141<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="8-优雅的计算程序运行时间"><a href="#8-优雅的计算程序运行时间" class="headerlink" title="8. 优雅的计算程序运行时间"></a>8. 优雅的计算程序运行时间</h2><p>在 Linux 下，可以通过 <code>time</code> 命令，很容易获取程序的运行时间：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">time</span> ./test
+real    0m1.003s
+user    0m0.000s
+sys     0m0.000s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以看到，程序的运行时间为: <code>1.003s</code>。细心的同学，会看到 <code>real</code> 貌似不等于 <code>user</code> + <code>sys</code>，而且还远远大于，这是怎么回事呢？</p>
+<p>先来解释下这三个参数的含义：</p>
+<ul>
+<li><code>real</code>：表示的钟表时间，也就是从程序执行到结束花费的时间；</li>
+<li><code>user</code>：表示运行期间，cpu 在用户空间所消耗的时间；</li>
+<li><code>sys</code>：表示运行期间，cpu 在内核空间所消耗的时间；</li>
 </ul>
+<p>由于 <code>user</code> 和 <code>sys</code> 只统计 cpu 消耗的时间，程序运行期间会调用 sleep 发生阻塞，也可能会等待网络或磁盘 IO，都会消耗大量时间。因此对于类似情况，<code>real</code> 的值就会大于其它两项之和。</p>
+<p>下面贴一下进程状态图帮助理解：</p>
+<p><img src="https://i.loli.net/2021/07/11/zRaWPvc2wTQSy5e.png" alt="进程状态图"></p>
+<p>另外，也会遇到 <code>real</code> 远远小于 <code>user</code> + <code>sys</code> 的场景，这是什么鬼情况？</p>
+<p>这个更好理解，如果程序在多个 cpu 上并行，那么 <code>user</code> 和 <code>sys</code> 统计时间是多个 cpu 时间，实际消耗时间 <code>real</code> 很可能就比其它两个之和要小了</p>
+<h2 id="9-命令行查看ascii码"><a href="#9-命令行查看ascii码" class="headerlink" title="9. 命令行查看ascii码"></a>9. 命令行查看ascii码</h2><p>我们在开发过程中，通常需要查看 <code>ascii</code> 码，通过 Linux 命令行就可以轻松查看，而不用去 Google 或 Baidu</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">man</span> ascii<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="10-优雅的删除乱码的文件"><a href="#10-优雅的删除乱码的文件" class="headerlink" title="10. 优雅的删除乱码的文件"></a>10. 优雅的删除乱码的文件</h2><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
+<p>不用担心，下边来展示下 <code>find</code> 是如何优雅的解决问题的。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">ls</span>  -i
+138957 a.txt  138959 T.txt  132395 ڹ��.txt
+
+$ <span class="token function">find</span> <span class="token keyword">.</span> -inum 132395 -exec <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>命令中，<code>-inum</code> 指定的是文件的 <code>inode</code> 号，它是系统中每个文件对应的唯一编号，find 通过编号找到后，执行删除操作。</p>
+<h2 id="11-获取公网IP地址"><a href="#11-获取公网IP地址" class="headerlink" title="11. 获取公网IP地址"></a>11. 获取公网IP地址</h2><p>在办公或家庭环境，我们的虚拟机或服务器上配置的通常是内网 IP 地址，我们如何知道，在与外网通信时，我们的公网出口 IP 是神马呢？</p>
+<p>这个在 Linux 上非常简单，一条命令搞定</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ curl ip.sb
+$ curl ifconfig.me<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>上述两条命令都可以</p>
+<h2 id="12-如何批量下载网页资源"><a href="#12-如何批量下载网页资源" class="headerlink" title="12. 如何批量下载网页资源"></a>12. 如何批量下载网页资源</h2><p>有时，同事会通过网页的形式分享文件下载链接，在 Linux 系统，通过 <code>wget</code> 命令可以轻松下载，而不用写脚本或爬虫</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">wget</span> -r -nd -np --accept<span class="token operator">=</span>pdf http://fast.dpdk.org/doc/pdf-guides/
+<span class="token comment" spellcheck="true"># --accept：选项指定资源类型格式 pdf</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="13-历史命令使用技巧"><a href="#13-历史命令使用技巧" class="headerlink" title="13. 历史命令使用技巧"></a>13. 历史命令使用技巧</h2><p>分享几个历史命令的使用技巧，能够提高你的工作效率。</p>
+<ul>
+<li><code>!!</code>：重复执行上条命令；</li>
+<li><code>!N</code>：重复执行 history 历史中第 N 条命令，N 可以通过 history 查看；</li>
+<li><code>!pw</code>：重复执行最近一次，以<code>pw</code>开头的历史命令，这个非常有用，小编使用非常高频；</li>
+<li><code>!$</code>：表示最近一次命令的最后一个参数；</li>
+</ul>
+<p>猜测大部分同学没用过 <code>!$</code>，这里简单举个例子，让你感受一下它的高效用法</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ vim /root/sniffer/src/main.c
+$ <span class="token function">mv</span> <span class="token operator">!</span>$ <span class="token operator">!</span>$.bak
+<span class="token comment" spellcheck="true"># 相当于</span>
+$ <span class="token function">mv</span> /root/sniffer/src/main.c /root/sniffer/src/main.c.bak<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当前工作目录是 root，想把 main.c 改为 main.c.bak。正常情况你可能需要敲 2 遍包含 main.c 的长参数，当然你也可能会选择直接复制粘贴。</p>
+<p>而我通过使用 <code>!$</code> 变量，可以很轻松优雅的实现改名，是不是很 <code>hacker</code> 呢？</p>
+<h2 id="14-快速搜索历史命令"><a href="#14-快速搜索历史命令" class="headerlink" title="14. 快速搜索历史命令"></a>14. 快速搜索历史命令</h2><p>在 Linux 下经常会敲很多的命令，我们要怎么快速查找并执行历史命令呢？</p>
+<p>通过<em>上下键</em>来翻看历史命令，No No No，可以通过执行 <code>Ctrl + r</code>，然后键入要所搜索的命令关键词，进行搜索，回车就可以执行，非常高效。</p>
+<h2 id="15-隐藏命令历史"><a href="#15-隐藏命令历史" class="headerlink" title="15. 隐藏命令历史"></a>15. 隐藏命令历史</h2><p>最后，再分享一个真正的黑客不能忽略技巧。我们在所要执行的命令前，加一个<strong>空格</strong>，那这条命令就不会被 <code>history</code> 保存到历史记录</p>
 
             </div>
             <hr/>
@@ -878,7 +855,7 @@ black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</s
                     </span>
                     <a href="http://yfxiongda.github.io" class="b-link-green">布菜克先生的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/05/08/Ubuntu%E9%83%A8%E7%BD%B2lamp%E7%8E%AF%E5%A2%83/" class="b-link-green">Ubuntu部署lamp环境</a>
+                    <a href="/2021/07/11/Linux%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="b-link-green">Linux终端实用技巧</a>
                 </p>
             </div>
 
@@ -900,28 +877,29 @@ black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/09/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B-%E4%B8%80-Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/">
+                <a href="/2021/07/11/Linux%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2021/05/09/DBSVMmLG1WInqvo.png" class="responsive-img" alt="Linux系统编程(一):Linux基础知识补充">
+                        <img src="https://i.loli.net/2021/07/11/hzHBpcGPbx43jaL.jpg" class="responsive-img" alt="Linux终端实用技巧">
                         
-                        <span class="card-title">Linux系统编程(一):Linux基础知识补充</span>
+                        <span class="card-title">Linux终端实用技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Linux系统编程第一章：Linux的基础知识补充
+                            分享实用却鲜知的Linux终端命令技巧
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -934,15 +912,12 @@ black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</s
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E7%A8%8B/" target="_blank">
-                        <span class="chip bg-color">编程</span>
+                    <a href="/tags/Linux-%E7%BB%88%E7%AB%AF/" target="_blank">
+                        <span class="chip bg-color">Linux 终端</span>
                     </a>
                     
                 </div>
@@ -956,23 +931,23 @@ black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</s
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/08/Docker%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/">
+                <a href="/2021/05/19/JAVA%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2021/05/08/jiyugDbYdEJMQoA.png" class="responsive-img" alt="Docker使用案例">
+                        <img src="https://i.loli.net/2021/05/19/HNmrLQ12lsD5yMx.png" class="responsive-img" alt="JAVA基础学习">
                         
-                        <span class="card-title">Docker使用案例</span>
+                        <span class="card-title">JAVA基础学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这里介绍了几个Docker使用的案例，包括使用Docker和Docker-compose安装Owncloud，使用Docker安装WordPress等。你可以学到部署和控制容器。
+                            介绍了入门Java的基础知识，包含面向对象编程支持——封装、继承、多态
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-19
                             </span>
                         <span class="publish-author">
                             
@@ -989,12 +964,12 @@ black@black-OMEN:/etc/apache2/conf-enabled$ <span class="token function">sudo</s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/" target="_blank">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/JAVA/" target="_blank">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/Owncloud/" target="_blank">
-                        <span class="chip bg-color">Owncloud</span>
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" target="_blank">
+                        <span class="chip bg-color">面向对象</span>
                     </a>
                     
                 </div>
