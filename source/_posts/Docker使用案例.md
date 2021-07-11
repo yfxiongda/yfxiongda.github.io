@@ -2,12 +2,12 @@
 title: Docker使用案例
 author: bucaike
 top: false
-cover: false
+cover: true
 toc: true
 mathjax: false
 date: 2021-05-08 14:06:48
 img: https://i.loli.net/2021/05/08/jiyugDbYdEJMQoA.png
-coverImg: https://i.loli.net/2021/05/08/jiyugDbYdEJMQoA.png
+coverImg: https://i.loli.net/2021/07/11/dZysXS9wqjKPJCL.png
 summary: 这里介绍了几个Docker使用的案例，包括使用Docker和Docker-compose安装Owncloud，使用Docker安装WordPress等。你可以学到部署和控制容器。
 tags:
   - Docker

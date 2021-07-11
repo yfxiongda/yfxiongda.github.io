@@ -1,13 +1,14 @@
 ---
 title: Ubuntu20.04初步配置教程
 top: false
-cover: false
+cover: true
 toc: true
 date: 2021-05-08 10:56:03
 author: bucaike
 img: https://i.loli.net/2021/05/08/DcP4pRvWausHMCl.jpg
 coverImg: https://i.loli.net/2021/05/08/DcP4pRvWausHMCl.jpg
 mathjax: false
+summary: 轻松上手Linux✌
 tags:
   - Linux
   - 优化

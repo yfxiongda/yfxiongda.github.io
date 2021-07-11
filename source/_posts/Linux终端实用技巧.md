@@ -2,12 +2,12 @@
 title: Linux终端实用技巧
 author: bucaike
 top: false
-cover: https://i.loli.net/2021/07/11/hzHBpcGPbx43jaL.jpg
+cover: false
 toc: true
 mathjax: false
 date: 2021-07-11 08:06:56
 img: https://i.loli.net/2021/07/11/hzHBpcGPbx43jaL.jpg
-coverImg: https://i.loli.net/2021/07/11/hzHBpcGPbx43jaL.jpg
+coverImg: https://i.loli.net/2021/07/11/nilRNJdSQG6EsAZ.png
 summary: 分享实用却鲜知的Linux终端命令技巧
 tags: Linux 终端
 categories: 技术
