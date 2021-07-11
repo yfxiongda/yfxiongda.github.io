@@ -6,18 +6,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux系统编程(一):Linux基础知识补充, 布菜克先生的博客">
+    <meta name="keywords" content="一次MySQL线上死锁分析, 布菜克先生的博客">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY" />
-    <meta name="description" content="第 1章：Linux操作系统编程基础知识补充
-课程视频：黑马程序员 - Linux系统编程
+    <meta name="description" content="一次MySQL线上死锁分析
+本文原作者：是小桔啦，此处略作整理和补充
 
-1.1 基础命令
-cd 命令
-cd - 在当前目录和上一个目录之间切换
-❯ cd /etc/nginx
-❯ cd ~/my_code
-❯ cd -">
+前言MySQL 的锁机制相信大家在学习 MySQL 的时候都有简单的了解过，那既然有锁就必定绕不开死锁这个问题。其实 MySQL 在大部分场景下是不会存在死锁问题的(比">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +20,7 @@ cd - 在当前目录和上一个目录之间切换
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Linux系统编程(一):Linux基础知识补充 | 布菜克先生的博客</title>
+    <title>一次MySQL线上死锁分析 | 布菜克先生的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -431,13 +426,13 @@ cd - 在当前目录和上一个目录之间切换
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/05/09/DBSVMmLG1WInqvo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/07/11/aMQvIwYlWPbocmf.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Linux系统编程(一):Linux基础知识补充
+                        一次MySQL线上死锁分析
                     </div>
                 </div>
             </div>
@@ -549,12 +544,8 @@ cd - 在当前目录和上一个目录之间切换
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/" target="_blank">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BC%96%E7%A8%8B/" target="_blank">
-                                <span class="chip bg-color">编程</span>
+                            <a href="/tags/MySQL-%E6%AD%BB%E9%94%81/" target="_blank">
+                                <span class="chip bg-color">MySQL 死锁</span>
                             </a>
                         
                     </div>
@@ -577,7 +568,7 @@ cd - 在当前目录和上一个目录之间切换
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-09
+                    2021-07-11
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -591,7 +582,7 @@ cd - 在当前目录和上一个目录之间切换
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.9k
+                        2k
                     </div>
                     
 
@@ -615,310 +606,82 @@ cd - 在当前目录和上一个目录之间切换
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第-1章：Linux操作系统编程基础知识补充"><a href="#第-1章：Linux操作系统编程基础知识补充" class="headerlink" title="第 1章：Linux操作系统编程基础知识补充"></a>第 1章：Linux操作系统编程基础知识补充</h1><blockquote>
-<p>课程视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KE411q7ee?p=35">黑马程序员 - Linux系统编程</a></p>
+                <h1 id="一次MySQL线上死锁分析"><a href="#一次MySQL线上死锁分析" class="headerlink" title="一次MySQL线上死锁分析"></a>一次MySQL线上死锁分析</h1><blockquote>
+<p>本文原作者：<a target="_blank" rel="noopener" href="https://blog.csdn.net/shixiaojula/article/details/114004360">是小桔啦</a>，此处略作整理和补充</p>
 </blockquote>
-<h2 id="1-1-基础命令"><a href="#1-1-基础命令" class="headerlink" title="1.1 基础命令"></a>1.1 基础命令</h2><ul>
-<li><p><code>cd</code> 命令</p>
-<p><code>cd -</code> 在当前目录和上一个目录之间切换</p>
-<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cd</span> /etc/nginx
-❯ <span class="token function">cd</span> ~/my_code
-❯ <span class="token function">cd</span> -
-/etc/nginx
-❯ <span class="token function">pwd</span>
-/etc/nginx
-❯ <span class="token function">cd</span> -
-~/my_code
-❯ <span class="token function">pwd</span>
-/home/black/my_code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MySQL 的锁机制相信大家在学习 MySQL 的时候都有简单的了解过，那既然有锁就必定绕不开死锁这个问题。其实 MySQL 在大部分场景下是不会存在死锁问题的(比如并发量不高，SQL 写得不至于太拉胯的情况)，但是在高并发的业务场景下，一不注意就会产生死锁，而这个死锁分析起来也比较麻烦。</p>
+<p>下面介绍一个遇到的一个比较<strong>奇怪的死锁</strong>。</p>
+<h2 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h2><p>简单说一下业务背景，公司做的是电商直播，这个死锁就出现在主播后台对商品信息进行更新的时候。</p>
+<p>一个商品会有两个关联的 ID，通过其中任何一个 ID 都无法确定唯一一件商品（也就是说这个 ID 和商品是<strong>一对多</strong>的关系），只能同时查询两个 ID，才能确定一件商品。所以在更新商品信息的时候，需要在 where 条件中同时指定两个 ID，下面是死锁 SQL 的结构（已脱敏）：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">UPDATE</span> test_table <span class="token keyword">SET</span> <span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token operator">=</span><span class="token string">"zhangsan"</span> <span class="token keyword">WHERE</span> class_id <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">AND</span> teacher_id <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>这个 SQL 非常简单，根据两个等值条件，对一个字段进行更新。</strong></p>
+<p>不知道你看到这个 SQL 会不会懵逼，按常理来说，应该是一个事务里有多条 SQL 才会有可能出现死锁，这一条 SQL 怎么可能出现死锁呢？</p>
+<p>最后查出来是由于 MySQL 的索引合并优化导致的，即 Index Merge，下面会进行详细讲解并复现一下死锁场景。</p>
+<h2 id="索引合并"><a href="#索引合并" class="headerlink" title="索引合并"></a>索引合并</h2><p>Index Merge 是 MySQL 在 5.0 的时候引入的一项优化功能，主要是用于优化一条 SQL 使用多个索引的情况。</p>
+<p>我们来看刚刚的 SQL，假设 <code>class_id</code> 和 <code>teacher_id</code> 分别是两个普通索引：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">UPDATE</span> test_table <span class="token keyword">SET</span> <span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token operator">=</span><span class="token string">"zhangsan"</span> <span class="token keyword">WHERE</span> class_id <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">AND</span> teacher_id <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>如果没有 Index Merge 优化的时候</strong>，MySQL 查询数据的步骤如下：</p>
+<ul>
+<li>根据 class_id 或 teacher_id （具体使用哪个索引由优化器根据实际数据情况自行判断，这里假设使用 <code>class_id</code> 的索引）在二级索引上查询到对应数据的主键 ID</li>
+<li>根据查询到的主键 ID 进行回标查询（即查询聚簇索引），得到相应的数据行</li>
+<li>从数据行中获取 <code>teacher_id</code> ，判断其是否等于 8，满足条件则返回</li>
+</ul>
+<p>从这个过程中，不难看出，<strong>MySQL 只使用到了一个索引</strong>，至于为什么不使用多个索引，简单来说就是因为多个索引在多棵树上，强行使用反而降低性能。</p>
+<p>再来看看<strong>引入了 Index Merge 优化后</strong>，MySQL 查询数据的步骤如下：</p>
+<ul>
+<li><p>根据 <code>class_id</code> 查询到相应的主键，再根据主键回表查询到对应的数据行（记为结果集 A）</p>
 </li>
-<li><p><code>ls</code>命令</p>
-<p><code>ls -R</code> 递归显示当前目录下文件和文件夹</p>
-<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cd</span> Downloads
-❯ <span class="token function">ls</span> -R
-.:
-Compressed  Documents  Music  Programs  Video
+<li><p>根据 <code>teacher_id</code> 查询到相应的主键，再根据主键回表查询到对应的数据行（记为结果集 B）</p>
+</li>
+<li><p>将结果集 A 和结果集 B 执行交集操作，获得最终满足条件的结果集</p>
+</li>
+</ul>
+<p>这里可以看出，有了 Index Merge 之后，MySQL 将一条 SQL 语句拆分成了两个查询步骤，<strong>分别使用两个索引，再用交集操作优化性能</strong>。</p>
+<h2 id="死锁分析"><a href="#死锁分析" class="headerlink" title="死锁分析"></a>死锁分析</h2><p>分析完了 Index Merge 的步骤，我们再回过头想一下为什么会出现死锁呢？</p>
+<p>还记得上面说的 Index Merge 将一条 SQL 查询拆分成了两个步骤吗，问题就出现在这里。我们知道 <code>UPDATE</code> 语句是会加上一个<strong>行级排他锁</strong>的，在分析加锁步骤之前，我们假设有如下一个数据表：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/3844e0d10f8cb651115b686f51a330df.png"></p>
+<p>上表数据满足我们文章开头说的特点，根据 <code>class_id</code> 和 <code>teacher_id</code> 单个字段均无法唯一确定一条数据，只能联合两个字段，才能确定一条数据，并且设定 <code>class_id</code> 和 <code>teacher_id</code> 分别为两个普通索引。</p>
+<p>假设有如下两条 SQL 语句并发执行，它们的参数完全不同，直觉告诉我们应该不会出现死锁，但直觉往往是错误的：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">// 线程 A 执行</span>
+<span class="token keyword">UPDATE</span> test_table <span class="token keyword">SET</span> <span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token operator">=</span><span class="token string">"zhangsan"</span> <span class="token keyword">WHERE</span> class_id <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">AND</span> teacher_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-./Compressed:
-Hack.zip
-
-./Documents:
-cryptous.pdf  PDF_611399243.html
-
-./Music:
-
-./Programs:
-code-server_3.8.0_amd64.deb
-
-./Video:
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<h2 id="1-2-文件和用户"><a href="#1-2-文件和用户" class="headerlink" title="1.2 文件和用户"></a>1.2 文件和用户</h2><table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">ls -l 中的表示</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">普通文件</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">目录文件</td>
-<td align="center">d</td>
-</tr>
-<tr>
-<td align="center">字符设备文件</td>
-<td align="center">c</td>
-</tr>
-<tr>
-<td align="center">块设备文件</td>
-<td align="center">b</td>
-</tr>
-<tr>
-<td align="center">软链接</td>
-<td align="center">l</td>
-</tr>
-<tr>
-<td align="center">管道文件</td>
-<td align="center">p</td>
-</tr>
-<tr>
-<td align="center">套接字</td>
-<td align="center">s</td>
-</tr>
-</tbody></table>
+<span class="token comment" spellcheck="true">// 线程 B 执行</span>
+<span class="token keyword">UPDATE</span> test_table <span class="token keyword">SET</span> <span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token operator">=</span><span class="token string">"zhangsan"</span> <span class="token keyword">WHERE</span> class_id <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">AND</span> teacher_id <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>那么<strong>在 Index Merge 的优化下</strong>，并发执行如上 SQL 的时候，MySQL 的加锁步骤如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/dd4390c91f1c83e58dc756177c737490.png"></p>
+<p><strong>最终，两个事务互相等待，形成死锁</strong></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>因为这个死锁本质上还是由于 Index Merge 这个优化导致的，所以要解决这个场景的死锁问题，本质上只要让 MySQL 不走 Index Merge 优化即可。</p>
+<h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><p>手动将一条 SQL 拆分成多条 SQL，在逻辑层做交集操作，阻止 MySQL 的憨憨优化行为，比如这里我们可以先根据 <code>class_id</code> 查询到相应主键，再根据 <code>teacher_id</code> 查询相应主键，最后根据交集后的主键查询数据。</p>
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><p>建立联合索引，比如这里可以将 <code>class_id</code> 和 <code>teacher_id</code> 建立一个联合索引，MySQL 就不会走 Index Merge 了</p>
+<h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><p>强制走单个索引，在表名后添加 <code>for index(class_id)</code> 可以指定该语句仅走 class_id 索引</p>
+<h3 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h3><p>关闭 Index Merge 优化：</p>
 <ul>
-<li><p><code>chmod</code>命令</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token punctuation">[</span>who<span class="token punctuation">]</span> <span class="token punctuation">[</span>+<span class="token operator">|</span>-<span class="token operator">|</span><span class="token operator">=</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>mode<span class="token punctuation">]</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>who</code>可以是下面字母中的任意一个或者他们的组合：</p>
-<ul>
-<li>u : 表示用户，即文件或目录的所有者</li>
-<li>g : 表示同组用户，即与文件属主有相同ID的所有用户</li>
-<li>o : 表示其他用户</li>
-<li>a : 表示所有用户，是系统默认值</li>
-</ul>
-<p>操作符号可以是：</p>
-<ul>
-<li>+: 添加某个权限</li>
-<li>-: 取消某个权限</li>
-<li>=: 赋予给定权限并取消其他所有权限</li>
-</ul>
-<p><code>mod</code> 即可读可写可执行的任意组合</p>
+<li><p>永久关闭：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SET</span> <span class="token punctuation">[</span><span class="token keyword">GLOBAL</span><span class="token operator">|</span><span class="token keyword">SESSION</span><span class="token punctuation">]</span> optimizer_switch<span class="token operator">=</span><span class="token string">'index_merge=off'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p><code>tar</code>命令</p>
-<ul>
-<li><code>-c</code>：创建新的档案文件</li>
-<li><code>-r</code>：把要存档的文件追加到档案文件的末尾</li>
-<li><code>-t</code>：列出档案文件内容，查看档案包中的文件</li>
-<li><code>-u</code>：更新文件。用新增的文件取代原档案文件，如果在档案文件中找不到要更新的文件，则把他追加到档案文件的最后</li>
-<li><code>-x</code>：从档案文件中释放文件</li>
-<li><code>-z</code>：使用<code>gzip</code>进行压缩</li>
-<li><code>-j</code>：使用<code>bzip2</code>方式压缩</li>
-</ul>
-<p>常用创建压缩文件的命令</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -zcvf compress.tar.gz file1 file2 dir1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>常用解压缩文件命令</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -jcvf compress.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p><code>rar</code>和<code>unrar</code></p>
-<p>压缩文件</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">rar</span> a -r compress.rar file1 dir2 file2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>解压文件</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">unrar</span> x compress.rar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p><code>zip</code>和<code>unzip</code></p>
-<p>压缩文件</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">zip</span> -r compress.zip file1 dir1 file3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>解压缩文件</p>
-<pre class="line-numbers language-bash"><code class="language-bash">unzip compress.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li><p>临时关闭：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">UPDATE</span> <span class="token comment" spellcheck="true">/*+ NO_INDEX_MERGE(test_table) */</span> test_table SETname<span class="token operator">=</span><span class="token string">"zhangsan"</span> <span class="token keyword">WHERE</span> class_id <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">AND</span> teacher_id <span class="token operator">=</span> <span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ul>
-<h2 id="1-3-搜索"><a href="#1-3-搜索" class="headerlink" title="1.3 搜索"></a>1.3 搜索</h2><ul>
-<li><p><code>chown</code>命令</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chown</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">]</span> <span class="token punctuation">..</span>. <span class="token punctuation">[</span>OWNER:GROUP<span class="token punctuation">]</span> FILE <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>OPTION</code> 的主要参数：</p>
-<ul>
-<li>-R：递归地改变指定目录及其下的所有子目录和文件的拥有者。</li>
-<li>-v：显示<code>chown</code>命令所做的工作。</li>
-</ul>
-</li>
-<li><p><code>find</code>命令</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> <span class="token punctuation">[</span>PATHNAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>-OPTIONS: -print -exec -ok -name -type <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li><code>-name</code> ：按文件名搜索</li>
-<li><code>-maxdepth</code>：指定搜索深度</li>
-<li><code>-size</code>：按文件大小搜索：k、M、G</li>
-<li><code>-atime、-mtime、-ctime</code>：accsess time访问时间、mod change属性更改时间、change time文件内容更改时间</li>
-<li><code>-type</code>：按文件类型搜索。d/p/s/c/b/l/f(文件)</li>
-</ul>
-<p>扩展</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> /usr/ -name <span class="token string">'*tmp*'</span> -exec <span class="token function">rm</span> -r <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span>
-<span class="token function">find</span> /usr/ -name <span class="token string">'*tmp*'</span> -ok <span class="token function">rm</span> -r <span class="token punctuation">[</span><span class="token punctuation">]</span> \<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>如果查找的文件名中有空格，同时又想利用<code>xargs</code>管道的话：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> ./ <span class="token function">type</span> f print0 <span class="token operator">|</span> <span class="token function">xargs</span> -0 <span class="token function">ls</span> -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p><code>grep</code> 命令</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">grep</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> PATTERN <span class="token punctuation">[</span>FILE<span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>-r</code>：递归搜索</p>
-<p><code>-n</code>：显示行号</p>
-<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cat</span> abc
-kkfdasjfklasfj
-hello<span class="token operator">!</span> world
-dfasjfklasnflk
-2131312
-❯ <span class="token function">grep</span> <span class="token string">"hello\!"</span> ./ -rn
-./abc:2:hello<span class="token operator">!</span> world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p><code>xargs</code></p>
-<p>有时后面的命令不接受管道，此时可以添加<code>xargs</code>实现。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">ls</span> -l
-总用量 108
--rw-r--r-- 1 black black    51  1月 20 15:58 abc
--rw-r--r-- 1 black black 98571  1月 14 12:05 blog.WordPress.2021-01-14.xml
-drwxr-xr-x 2 black black  4096  1月 20 16:01 temp
-❯ <span class="token function">find</span> ./ -type f <span class="token operator">|</span> <span class="token function">ls</span> -l
-总用量 108
--rw-r--r-- 1 black black    51  1月 20 15:58 abc
--rw-r--r-- 1 black black 98571  1月 14 12:05 blog.WordPress.2021-01-14.xml
-drwxr-xr-x 2 black black  4096  1月 20 16:01 temp
-❯ <span class="token function">find</span> ./ -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">ls</span> -l
--rw-r--r-- 1 black black    51  1月 20 15:58 ./abc
--rw-r--r-- 1 black black 98571  1月 14 12:05 ./blog.WordPress.2021-01-14.xml
-❯ <span class="token function">find</span> ./ -type f <span class="token operator">|</span> <span class="token function">grep</span> ab
-./abc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<h2 id="1-4-GCC补充知识"><a href="#1-4-GCC补充知识" class="headerlink" title="1.4 GCC补充知识"></a>1.4 <code>GCC</code>补充知识</h2><ul>
-<li><p><code>gcc</code>编译可执行程序的步骤：</p>
-<p><img src="https://i.loli.net/2021/05/09/bhCnOsjJ7qdGy5V.png" alt="1.4_1"></p>
-</li>
-<li><p><code>gcc</code>常用参数：</p>
-<ul>
-<li><p><code>-I [directory]</code>：指定头文件目录。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">❯ <span class="token function">cat</span> hello.c
-<span class="token comment" spellcheck="true">#include&lt;hello.h></span>
-int main<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                printf<span class="token punctuation">(</span><span class="token string">"nihao\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span> 0<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-❯ <span class="token function">cat</span> inc/hello.h
-<span class="token comment" spellcheck="true">#include&lt;stdio.h></span>
-❯ gcc hello.c -o hello
-hello.c:1:9: 致命错误：hello.h：没有那个文件或目录
-    1 <span class="token operator">|</span> <span class="token comment" spellcheck="true">#include&lt;hello.h></span>
-      <span class="token operator">|</span>         ^~~~~~~~~
-编译中断。
-❯ gcc hello.c -o hello -I ./inc/
-❯ ./hello
-nihao
-❯<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p><code>-c</code>：只做预处理、编译、汇编操作，生成<code>.o</code>二进制文件，不进行链接</p>
-</li>
-<li><p><code>-g</code>：包含调试信息</p>
-</li>
-<li><p><code>-O[n]</code>：<code>n</code>可取0～3，<code>n</code>越大，优化越多</p>
-</li>
-<li><p><code>-Wall</code>：提示更多警告信息</p>
-</li>
-<li><p><code>-E</code>：生成预处理文件</p>
-</li>
-<li><p><code>-D[DEF]</code>：编译时定义宏</p>
-</li>
-<li><p><code>-l</code>：指定动态库名</p>
-</li>
-<li><p><code>-L</code>：指定动态库路径</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-5-其他命令"><a href="#1-5-其他命令" class="headerlink" title="1.5 其他命令"></a>1.5 其他命令</h2><ul>
-<li><p><code>jobs</code>、<code>fg</code>、<code>bg</code></p>
-<ul>
-<li><code>jobs</code>用来显示当前shell下正在运行那些作业。</li>
-<li><code>fg</code>切换到前台</li>
-</ul>
-<p>示例如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">❯ kolourpaint <span class="token operator">&amp;</span>
-<span class="token punctuation">[</span>1<span class="token punctuation">]</span> 481488
-❯ <span class="token function">jobs</span>
-<span class="token punctuation">[</span>1<span class="token punctuation">]</span>  + running    kolourpaint
-❯ <span class="token function">fg</span> kolourpaint
-<span class="token punctuation">[</span>1<span class="token punctuation">]</span>  + 483544 running    kolourpaint
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p><code>man</code></p>
-<p>使用中需要注意的一点是，有很多重名的函数，比如<code>shell</code>编程中和<code>c</code>语言中都有<code>prinrf</code>这个函数，直接使用<code>man printf</code>可能不是我们想要的信息，因此需要注意章节信息。</p>
-<ul>
-<li><p><code>man man</code> ：查看章节以及帮助信息</p>
-</li>
-<li><p><code>man read</code>：查看<code>read</code>命令的 man page</p>
-</li>
-<li><p><code>man 3 printf</code>：查看程序库函数函数中<code>printf</code>的信息。（即在第三个 section 中，表示为 <code>printf(3)</code>）。</p>
-</li>
-<li><p><code>man -k printf</code>：以<code>printf</code>为关键字查找相关的 man page.</p>
-</li>
-</ul>
-<p>附章节信息如下（可通过<code>man man</code>查看）：</p>
-<pre class="line-numbers language-tex"><code class="language-tex">1  可执行程序或 shell 命令 
-2  系统调用(内核提供的函数) 
-3  库调用(程序库中的函数) 
-4  特殊文件(通常位于 /dev) 
-5  文件格式和规范，如  /etc/passwd 
-6  游戏 
-7  杂项(包括宏包和规范，如 **man**(7)，**groff**(7)) 
-8  系统管理命令(通常只针对 root 用户) 
-9  内核例程 [非标准<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<h2 id="1-6-vim的实用补充："><a href="#1-6-vim的实用补充：" class="headerlink" title="1.6 vim的实用补充："></a>1.6 <code>vim</code>的实用补充：</h2><ul>
-<li><p>命令模式：</p>
-<ul>
-<li><code>I</code>：光标跳转到行首并跳转到编辑插入模式。</li>
-<li><code>A</code>：光标跳转到行尾并跳转到编辑插入模式。</li>
-<li><code>ci"</code>：删除双引号中间的所有内容并进入编辑模式，i有<code>in</code>的意思，可以配合其他使用。</li>
-<li><code>fw</code>：光标跳转到w。</li>
-<li><code>s</code>：删除光标所在字符并跳转到编辑插入模式。</li>
-<li><code>S</code>：删除光标所在行并跳转到编辑插入模式。</li>
-<li><code>gg=G</code>：格式化代码。</li>
-<li><code>%</code>：光标如果在成对的符号上（如大括号、小括号、注释的斜线）则会跳转到下一个与其对应的下一个符号上，如果光标字在函数名上，则会跳转到括号上。</li>
-<li><code>dw</code>：删除光标所在的单词</li>
-<li><code>D</code>：从光标处删除至行尾</li>
-<li><code>0</code>：光标跳转到行首</li>
-<li><code>d0</code>：从光标删除至行首</li>
-<li><code>$</code>：光标跳转到行尾</li>
-<li><code>3dd</code>：从光标处行开始往下删除3行</li>
-<li><code>3yy</code>：从光标行开始向下复制3行</li>
-<li><code>*</code>：光标至于字符（单词）上，查找下一个与此匹配的字符（单词）。</li>
-<li><code>#</code>：与<code>*</code>作用相同，但是是向前搜索。</li>
-<li><code>&gt;&gt;</code>和<code>&lt;&lt;</code>：光标所在行向右或者向左缩进一次</li>
-<li><code>[Ctrl+]ww</code>：在不同分屏窗口之间切换</li>
-<li><code>3K</code>：跳转到光标所在单词的<code>man page</code>，其中3表示字在<code>man page</code>的第三章查找</li>
-<li><code>[d</code>：查看光标所在单词的宏定义</li>
-</ul>
-</li>
-<li><p>末行模式：</p>
-<ul>
-<li><code>s /name1/name2/g</code>：将光标所在行的所有<code>name1</code>替换成<code>name2</code>。</li>
-<li><code>s /name1/name2</code>：将光标所在行的出现的第一个<code>name1</code>替换成<code>name2</code>。</li>
-<li><code>%s /name1/name2/g</code>：将文件中所有出现的<code>name1</code>替换成<code>name2</code>。</li>
-<li><code>%s /name1/name2</code>：将文件中每一行第一个出现的<code>name1</code>替换成<code>name2</code>。</li>
-<li><code>5, 9s /name1/name2/g</code>：自第5行起至第9行所有出现的<code>name1</code>替换成<code>name2</code></li>
-<li><code>sp</code>和<code>vsp</code>：上下分屏和左右分屏</li>
-<li><code>qall</code>：退出所有分屏</li>
-</ul>
-</li>
-<li><p>可视模式</p>
-<ul>
-<li><code>[shift]+v</code>：进入行可视模式，一次选中一行。</li>
-<li><code>ctrl+v</code>：可视块模式。</li>
-<li></li>
-</ul>
-</li>
-</ul>
+<h2 id="场景复现"><a href="#场景复现" class="headerlink" title="场景复现"></a>场景复现</h2><h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><p>为了方便测试，这里提供一个 SQL 脚本，将其用 Navicat 导入后即可得到需要的测试数据：</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://cdn.juzibiji.top/file/index_merge_student.sql">https://cdn.juzibiji.top/file/index_merge_student.sql</a></p>
+<p>导入之后，我们会得到如下格式的 10000 条测试数据：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b2dc406b2a656cf7edd8503eaec9dbbb.png"></p>
+<h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><p>由于篇幅限制，这里仅给出代码 Gist 链接：<a target="_blank" rel="noopener" href="https://gist.github.com/juzi214032/17c0f7a51bd8d1c0ab39fa203f930c60">https://gist.github.com/juzi214032/17c0f7a51bd8d1c0ab39fa203f930c60</a></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/926d2a5947f3b5528cfd3adbf7a7fc0f.png"></p>
+<p>上述代码主要是开启 100 个线程执行我们的数据修改 SQL 语句，来模拟线上并发情况，在运行几秒钟后，我们会得到下面这样一个报错：</p>
+<pre class="line-numbers language-log"><code class="language-log">com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这代表已经产生了死锁异常。</p>
+<h3 id="死锁分析-1"><a href="#死锁分析-1" class="headerlink" title="死锁分析"></a>死锁分析</h3><p>上面我们用代码已经构造出了一个死锁，接下来我们进入 MySQL 看看死锁日志，在 MySQL 中执行如下命令即可查看死锁日志：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SHOW</span> <span class="token keyword">ENGINE</span> <span class="token keyword">INNODB</span> <span class="token keyword">STATUS</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/84c61d74c6a05925daaa2baad6700767.png"></p>
+<p>在日志中，我们找到 <code>LATEST DETECTED DEADLOCK</code> 这一行，这里开始便是我们上次产生的死锁，接下来我们开始分析。</p>
+<p>通过第 29 行可以看到，事务 1 执行的 SQL 的条件是 <code>class_id = 6</code> 和 <code>teacher_id = 16</code>，它目前持有了一个行锁，第 34~39 行是该行数据，34 行是主键的十六进制表示，我们转换为 10 进制即为 <strong>1616</strong>。同样的，看 45 行，其等待拿锁的是主键 id 1517 的数据。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/623f79359f3da63e5a29959e23d558af.png"></p>
+<p>接下来用同样的方法分析事务 2，可知事务 2 持有了 3 把锁，分别是主键 id 为<strong>1317、1417、1517</strong> 的数据行，等待的是 <strong>1616</strong> 。</p>
+<p>看到这里我们就已经发现了，事务 1 持有 1616 等待 1517，事务 2 持有1517 等待 1616，所以形成了一个死锁。此时 MySQL 的处理方法是回滚持有锁最少的事务，并且 JDBC 会抛出我们前面的 MySQLTransactionRollbackException 回滚异常。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个死锁在排查的时候其实非常不好排查，如果你不知道 MySQL 的 Index Merge，那么在排查的时候其实是毫无头绪的，因为呈现在你面前的就只有一条非常简单的 SQL，就算看死锁日志，也是一样的不明所以。</p>
+<p>所以处理这类问题，更多的还是考验你的知识储备量和经验，只要遇到过一次，后面在写 SQL 的时候多加注意就好了！</p>
 
             </div>
             <hr/>
@@ -1069,7 +832,7 @@ nihao
                     </span>
                     <a href="http://yfxiongda.github.io" class="b-link-green">布菜克先生的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/05/09/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B-%E4%B8%80-Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/" class="b-link-green">Linux系统编程(一):Linux基础知识补充</a>
+                    <a href="/2021/07/11/%E4%B8%80%E6%AC%A1MySQL%E7%BA%BF%E4%B8%8A%E6%AD%BB%E9%94%81%E5%88%86%E6%9E%90/" class="b-link-green">一次MySQL线上死锁分析</a>
                 </p>
             </div>
 
@@ -1091,28 +854,29 @@ nihao
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/19/JAVA%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">
+                <a href="/2021/07/11/%E4%B8%80%E6%AC%A1MySQL%E7%BA%BF%E4%B8%8A%E6%AD%BB%E9%94%81%E5%88%86%E6%9E%90/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2021/05/19/HNmrLQ12lsD5yMx.png" class="responsive-img" alt="JAVA基础学习">
+                        <img src="https://i.loli.net/2021/07/11/aMQvIwYlWPbocmf.png" class="responsive-img" alt="一次MySQL线上死锁分析">
                         
-                        <span class="card-title">JAVA基础学习</span>
+                        <span class="card-title">一次MySQL线上死锁分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            介绍了入门Java的基础知识，包含面向对象编程支持——封装、继承、多态
+                            单行SQL语句出现死锁情况分析
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1125,15 +889,12 @@ nihao
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JAVA/" target="_blank">
-                        <span class="chip bg-color">JAVA</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" target="_blank">
-                        <span class="chip bg-color">面向对象</span>
+                    <a href="/tags/MySQL-%E6%AD%BB%E9%94%81/" target="_blank">
+                        <span class="chip bg-color">MySQL 死锁</span>
                     </a>
                     
                 </div>
@@ -1147,23 +908,23 @@ nihao
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/08/Ubuntu%E9%83%A8%E7%BD%B2lamp%E7%8E%AF%E5%A2%83/">
+                <a href="/2021/07/11/Linux%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2021/05/08/GfvLj2Ubxpz6P47.png" class="responsive-img" alt="Ubuntu部署lamp环境">
+                        <img src="https://i.loli.net/2021/07/11/hzHBpcGPbx43jaL.jpg" class="responsive-img" alt="Linux终端实用技巧">
                         
-                        <span class="card-title">Ubuntu部署lamp环境</span>
+                        <span class="card-title">Linux终端实用技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文介绍了如何在Ubuntu下部署LAMP环境
+                            分享实用却鲜知的Linux终端命令技巧
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-11
                             </span>
                         <span class="publish-author">
                             
@@ -1180,12 +941,8 @@ nihao
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/LAMP/" target="_blank">
-                        <span class="chip bg-color">LAMP</span>
+                    <a href="/tags/Linux-%E7%BB%88%E7%AB%AF/" target="_blank">
+                        <span class="chip bg-color">Linux 终端</span>
                     </a>
                     
                 </div>
