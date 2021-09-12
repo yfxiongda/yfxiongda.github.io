@@ -6,18 +6,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker使用案例, 布菜克先生的博客">
+    <meta name="keywords" content="你管这破玩意儿叫文件系统？, 布菜克先生的博客">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY" />
-    <meta name="description" content="Docker使用案例
-来自: 布菜克先生
+    <meta name="description" content="你管这破玩意儿叫文件系统？0 引子
+以下文章来源于低并发编程 ，作者闪客sun
 
-安装Docker CE官方文档
-使用Docker来安装OwnCloud参见：简书
-直接安装
-拉取OwnCloud的官方docker镜像
-docker pull owncloud
- 需要用root用">
+你手里有一块硬盘，大小为 1T
+
+你还有一堆文件
+
+这些文件在硬盘看来，就是一堆二进制数据而已
+
+你准备把这些文件存储在硬盘上，并在需要的时候读取出来。
+要设">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +27,7 @@ docker pull owncloud
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Docker使用案例 | 布菜克先生的博客</title>
+    <title>你管这破玩意儿叫文件系统？ | 布菜克先生的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -431,13 +433,13 @@ docker pull owncloud
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/05/08/jiyugDbYdEJMQoA.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2021/09/12/js62er8PCRGH5dt.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Docker使用案例
+                        你管这破玩意儿叫文件系统？
                     </div>
                 </div>
             </div>
@@ -549,12 +551,8 @@ docker pull owncloud
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker/" target="_blank">
-                                <span class="chip bg-color">Docker</span>
-                            </a>
-                        
-                            <a href="/tags/Owncloud/" target="_blank">
-                                <span class="chip bg-color">Owncloud</span>
+                            <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" target="_blank">
+                                <span class="chip bg-color">文件系统</span>
                             </a>
                         
                     </div>
@@ -577,7 +575,7 @@ docker pull owncloud
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-08
+                    2021-09-12
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -591,14 +589,14 @@ docker pull owncloud
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        867
+                        2.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        10 分
                     </div>
                     
                 
@@ -615,151 +613,198 @@ docker pull owncloud
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Docker使用案例"><a href="#Docker使用案例" class="headerlink" title="Docker使用案例"></a>Docker使用案例</h1><blockquote>
-<p>来自: 布菜克先生</p>
+                <h1 id="你管这破玩意儿叫文件系统？"><a href="#你管这破玩意儿叫文件系统？" class="headerlink" title="你管这破玩意儿叫文件系统？"></a>你管这破玩意儿叫文件系统？</h1><h2 id="0-引子"><a href="#0-引子" class="headerlink" title="0 引子"></a>0 引子</h2><blockquote>
+<p>以下文章来源于<strong>低并发编程</strong> ，作者闪客sun</p>
 </blockquote>
-<h2 id="安装Docker-CE"><a href="#安装Docker-CE" class="headerlink" title="安装Docker CE"></a>安装Docker CE</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">官方文档</a></p>
-<h2 id="使用Docker来安装OwnCloud"><a href="#使用Docker来安装OwnCloud" class="headerlink" title="使用Docker来安装OwnCloud"></a>使用Docker来安装OwnCloud</h2><p>参见：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f09194ff94d5">简书</a></p>
-<h4 id="直接安装"><a href="#直接安装" class="headerlink" title="直接安装"></a>直接安装</h4><ol>
-<li><p>拉取OwnCloud的官方docker镜像</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker pull owncloud<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 需要用root用户拉取，否则会有警告：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp">Warning<span class="token punctuation">:</span> failed to <span class="token keyword">get</span> <span class="token keyword">default</span> registry endpoint <span class="token keyword">from</span> <span class="token function">daemon</span> <span class="token punctuation">(</span>Cannot connect to the Docker daemon<span class="token punctuation">.</span> Is the docker daemon running on <span class="token keyword">this</span> host<span class="token operator">?</span><span class="token punctuation">)</span><span class="token punctuation">.</span> Using system <span class="token keyword">default</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>index<span class="token punctuation">.</span>docker<span class="token punctuation">.</span>io<span class="token operator">/</span>v1<span class="token operator">/</span>
-Cannot connect to the Docker daemon<span class="token punctuation">.</span> Is the docker daemon running on <span class="token keyword">this</span> host<span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>改用MySQL数据库</p>
-<p> <code>owncloud</code> 默认使用 <code>SQLite</code> 数据库，官方建议选择另外一个不同的数据库，特别当使用桌面客户端同步文件时，不鼓励使用 <code>SQLite</code>。</p>
-<p> 拉取 <code>mysql</code> 官方docker镜像</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker pull mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 启动 MySQL 容器，用作 owncloud 容器的数据库。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker run --name my-mysql -p 3306:3306 -v /var/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span class="token operator">=</span><span class="token string">"123456"</span> -d mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 这里的密码为123456，端口是默认的<code>3306</code>，也可以用 <code>-p 宿主机映射端口:容器运行端口</code>来指定</p>
-</li>
-<li><p>启动 owncloud 容器</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker run --name owncloud -p 5679:80   -v /data/db/owncloud:/var/www/html/data --link my-mysql:mysql -d owncloud<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> <code>-p 5679:80</code> 将容器的80端口映射到宿主局的5679端口。</p>
-<p> <code>--link my-mysql:mysql</code> ：将 <code>owncloud容器(客户)</code> 链接到 <code>my-mysql容器(服务)</code>，链接别名：<code>mysql</code>。</p>
-</li>
-<li><p>配置 nginx 反向代理</p>
-<p> 在 <code>etc/nginx/nginx.conf</code> 的 <code>http{}</code> 段写入:</p>
-<pre class="line-numbers language-php"><code class="language-php">upstream pan_server<span class="token punctuation">{</span>
-    server  <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token punctuation">:</span><span class="token number">5679</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-server <span class="token punctuation">{</span>
-    listen   <span class="token number">80</span><span class="token punctuation">;</span>
-    server_name pan<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
-    access_log <span class="token operator">/</span>data<span class="token operator">/</span>logs<span class="token operator">/</span>nginx<span class="token operator">/</span>pan<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>com<span class="token punctuation">.</span>access<span class="token punctuation">.</span>log<span class="token punctuation">;</span>
-    error_log <span class="token operator">/</span>data<span class="token operator">/</span>logs<span class="token operator">/</span>nginx<span class="token operator">/</span>pan<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>com<span class="token punctuation">.</span>error<span class="token punctuation">.</span>log<span class="token punctuation">;</span>
-
-    proxy_set_header X<span class="token operator">-</span>Forwarded<span class="token operator">-</span><span class="token keyword">For</span> <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
-
-    location <span class="token operator">/</span> <span class="token punctuation">{</span>
-        proxy_set_header Host <span class="token variable">$host</span><span class="token punctuation">;</span>
-        proxy_set_header X<span class="token operator">-</span>Real<span class="token operator">-</span><span class="token constant">IP</span> <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
-        proxy_set_header X<span class="token operator">-</span>Forwarded<span class="token operator">-</span><span class="token keyword">For</span> <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
-        add_header Cache<span class="token operator">-</span>Control  <span class="token string">"no-cache"</span><span class="token punctuation">;</span>
-
-        proxy_pass http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//pan_server;</span>
-        limit_rate 256m<span class="token punctuation">;</span>
-        client_max_body_size <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>安装 <code>owncloud</code></p>
-<p>在浏览器上访问 <code>pan.xxx.com</code>，进入 owncloud 安装步骤：</p>
-<img src="https://i.loli.net/2021/05/08/F2KdDVZO3H9cY5n.png" alt="安装步骤" style="zoom: 50%;">
-
-<p>这里可能会报错误：</p>
-<pre class="line-numbers language-c"><code class="language-c">SQLSTATE<span class="token punctuation">[</span>HY000<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">2054</span><span class="token punctuation">]</span> The server requested authentication method unknown to the client<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>原因是：</p>
-<p>MySQL 8默认使用了新的密码验证插件：<code>caching_sha2_password</code>，而之前的PHP版本中所带的mysqlnd无法支持这种验证</p>
-<p>解决方法两种，一种是升级PHP支持mysql8的新验证插件，另一种mysql验证方式降级。</p>
+<p>你手里有一块硬盘，大小为 1T</p>
+<p><img src="https://i.loli.net/2021/08/23/T1cd23jsNXIQE4V.png" alt="pic_78b10855.png"></p>
+<p>你还有一堆文件</p>
+<p><img src="https://i.loli.net/2021/08/23/gDsn5oPl7kfAGN2.jpg" alt="pic_64df58b2.png"></p>
+<p>这些文件在硬盘看来，就是一堆二进制数据而已</p>
+<p><img src="https://i.loli.net/2021/08/23/YleUSGEs71qm45T.jpg" alt="pic_4a887e66.png"></p>
+<p>你准备把这些文件存储在硬盘上，并在需要的时候读取出来。</p>
+<p>要设计怎样的软件，才能更方便地在硬盘中读写这些文件呢？</p>
+<h2 id="1-块"><a href="#1-块" class="headerlink" title="1 块"></a>1 块</h2><p>首先我不想和复杂的扇区，设备驱动等细节打交道，因此我先实现了一个简单的功能，将硬盘按逻辑分成一个个的<strong>块</strong>，并可以以块为单位进行读写。</p>
+<p>每个块就定义为两个物理扇区的大小，即 1024 字节，就是 1KB 啦。</p>
+<p>硬盘太大不好分析，我们就假设你的硬盘只有 1MB，那么这块硬盘则有 1024 个块。</p>
+<p><img src="https://i.loli.net/2021/08/23/IBNqy1eU4zXC7i3.jpg" alt="pic_e675f6ce.png"></p>
+<p>OK，我们开始存文件啦！ 准备一个文件</p>
+<p><img src="https://i.loli.net/2021/08/23/ETYc9NKrqFuy7Rw.png" alt="pic_f595aae2.png"></p>
+<p>随便选个块放进去，3 号块吧！</p>
+<p><img src="https://i.loli.net/2021/08/23/uIK3VdcwW9lxvPn.jpg" alt="pic_593f36ca.png"></p>
+<p>成功！首战告捷！</p>
+<h2 id="2-位图"><a href="#2-位图" class="headerlink" title="2 位图"></a>2 位图</h2><p>再存一个文件！ 诶？发现问题了，万一这个文件也存到了 3 号块，不是把原来的文件覆盖了么？不行，得有一个地方记录，现在可使用的块有哪些，像这样。 </p>
+<table>
+<thead>
+<tr>
+<th align="center">块</th>
+<th align="center">状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">块0</td>
+<td align="center">未使用</td>
+</tr>
+<tr>
+<td align="center">块1</td>
+<td align="center">未使用</td>
+</tr>
+<tr>
+<td align="center">块2</td>
+<td align="center">已使用</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+<tr>
+<td align="center">块1023</td>
+<td align="center">未使用</td>
+</tr>
+</tbody></table>
+<p>那我们就用 0 号块，来记录所有块的使用情况吧！怎么记录呢？</p>
+<p><strong>位图！</strong> </p>
+<p><img src="https://i.loli.net/2021/08/23/gjeTMyQhcZRLVBO.gif" alt="pic_a9e40592.png"></p>
+<p>那我们给块 0 起个名字，叫<strong>块位图</strong>，之后这个块 0 就专门用来记录所有块的使用情况，不再用来存具体文件了。  当我们再存入一个新文件时，只需要在块位图中找到第一个为 0 的位，就可以找到第一个还未被使用的块，将文件存入。同时，别忘了把块位图中的相应位置改成 1。 完美！</p>
+<h2 id="3-inode"><a href="#3-inode" class="headerlink" title="3 inode"></a>3 inode</h2><p>下面，我们尝试读取刚刚的文件。</p>
+<p>咦？又遇到问题了，我怎么找到刚刚的文件呢？根据块号么？这也太蠢了，就像你去书店找书，店员让你提供书的编号，而不是书名，显然不合理。</p>
+<p> 因此我们给每个文件起一个名字，叫文件名，通过它来寻找这个文件。</p>
+<p>那必然就要有一个地方，记录文件名与块号的对应关系，像这样。</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件名</th>
+<th align="center">块号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">葵花宝典.txt</td>
+<td align="center">3号块</td>
+</tr>
+<tr>
+<td align="center">期末复习资料.mp4</td>
+<td align="center">10号块</td>
+</tr>
+<tr>
+<td align="center">论持久战.pdf</td>
+<td align="center">12号块</td>
+</tr>
+</tbody></table>
+<p>别急，既然都要选一个地方记录文件名称了，不妨多记录一点我们关心的信息吧，比如文件大小、文件创建时间、文件权限等。</p>
+<p>这些东西自然也要保存在硬盘上，我们选择用一个固定大小的空间，来表示这些信息，多大空间呢？128 字节吧。 为啥是 128 字节呢？我乐意。</p>
+<p><img src="https://i.loli.net/2021/08/23/bUTlxreRc3I6Vzf.png" alt="pic_86560a99.png"></p>
+<p> 我们将这 128 字节的结构体，叫做一个 <strong>inode</strong>。</p>
+<p>之后，我们每存入一个新的文件，不但要占用一个块来存放这个文件本身，还要占用一个 inode 来存放文件的这些<strong>元信息</strong>，并且这个 inode 的<strong>所在块号</strong>这个字段，就指向这个文件所在的块号.</p>
+<p><img src="https://i.loli.net/2021/08/23/1Iv7gFZPc8GBK5R.jpg" alt="pic_a9185c20.png"></p>
+<p>如果一个 inode 为 128 字节，那么一个块就可以容纳 8 个 inode，我们可以将这些 inode 编上号。</p>
+<p><img src="https://i.loli.net/2021/08/23/cXfiBDMwIeQEVPq.jpg" alt="pic_16aa960f.png"></p>
+<p>如果你觉得 inode 数不够，也可以用两个或者多个块来存放 inode 信息，但这样用于存放数据的块就少了，这就看你自己的平衡了。</p>
+<p><img src="https://i.loli.net/2021/08/23/8aghsfKOA4TtiQc.jpg" alt="pic_1996bbb1.png"></p>
+<p>同样，和块位图管理块的使用情况一样，我们也需要一个 <strong>inode 位图</strong>，来管理 inode 的使用情况。我们就把 inode 位图，放在 1 号块吧！ 同时，我们把 inode 信息，放在 2 号块，一共存 8 条 inode，这样我们的 2 号块就叫做 <strong>inode 表</strong>。 现在，我们的文件系统结构，变成了下面这个样子。</p>
+<p><img src="https://i.loli.net/2021/08/23/X1nENBr7MjK5ROq.jpg" alt="pic_53b994d9.png"></p>
+<blockquote>
+<p>注意：块位图是管理可用的块，每一位代表一个块的使用与否。inode 位图管理的是一条一条的 inode，并不是 inode 所占用的块，比如上图中有 8 条 inode，则 inode 位图中就有 8 位是管理他们的使用与否。</p>
+</blockquote>
+<h2 id="4-间接索引"><a href="#4-间接索引" class="headerlink" title="4 间接索引"></a>4 间接索引</h2><p>现在，我们的文件很小，一个块就能容下。</p>
+<p>但如果需要两个块、三个块、四个块呢？</p>
+<p>很简单，我们只需要采用<strong>连续存储法</strong>，而 inode 则只记录文件的第一个块，以及后面还需要多少块，即可。</p>
+<p>这种办法的缺点就是：容易留下大大小小的<strong>空洞</strong>，新的文件到来以后，难以找到合适的空白块，空间会被浪费。</p>
+<p><img src="https://i.loli.net/2021/08/23/5zuhtagS2dUvpnX.png" alt="pic_70441e01.png"></p>
+<p>看来这种方式不行，那怎么办呢？</p>
+<p>既然在 inode 中记录了文件所在的块号，为什么不扩展一下，多记录几块呢？</p>
+<p><img src="https://i.loli.net/2021/08/23/bUTlxreRc3I6Vzf.png" alt="pic_d7f95b78.png"></p>
+<p>原来在 inode 中只记录了一个块号，现在扩展一下，记录 8 个块号！而且这些块<strong>不需要连续</strong>。</p>
+<p><img src="https://i.loli.net/2021/08/23/FgJkhIc8qV2MXCn.png" alt="pic_019b14f8.png"></p>
+<p>嗯，这是个可行的办法！</p>
+<p>但是这也仅仅能表示 8 个块，能记录的最大文件是 8K （记住，一个块是 1K） , 现在的文件轻松就超过这个限制了，这怎么办？</p>
+<p>很简单，我们可以让其中一个块，作为<strong>间接索引</strong>。</p>
+<p><img src="https://i.loli.net/2021/08/23/xQd7nzRGo3PBvyL.png" alt="pic_e51af5e5.png"></p>
+<p>这样瞬间就有 263 个块 （多了 256 -1 个块） 可用了，这种索引叫<strong>一级间接索引</strong>。</p>
+<p>如果还嫌不够，就再弄一个块做一级间接索引，或者做二级间接索引 （二级间接索引则可以多出 256 * 256 - 1 个块) 。</p>
+<p>我们的文件系统，暂且先只弄一个一级间接索引。硬盘一共才 1024 个块，一个文件 263 个块够大了。再大了不允许，就这么任性，爱用不用。</p>
+<p>好了，现在我们已经可以保存很大的文件了，并且可以通过文件名和文件大小，将它们准确读取出来啦！</p>
+<h2 id="5-超级块"><a href="#5-超级块" class="headerlink" title="5 超级块"></a>5 超级块</h2><p>但我们得精益求精，我们再想想看这个文件系统有什么毛病。</p>
+<p>比如，inode 数量不够时，我们是怎么得知的呢？是不是需要在 inode 位图中找，找不到了才知道不够用了？</p>
+<p>同样，对于块数量不够时，也是如此。</p>
+<p>要是有个全局的地方，来记录这一切，就好了，也方便随时调整，比如这样</p>
+<table>
+<thead>
+<tr>
+<th align="center">项目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">inode 数量</td>
+</tr>
+<tr>
+<td align="center">空闲 inode 数量</td>
+</tr>
+<tr>
+<td align="center">块数量</td>
+</tr>
+<tr>
+<td align="center">空闲块数量</td>
+</tr>
+</tbody></table>
+<p>inode 数量 空闲 inode 数量 块数量 空闲块数量 那我们就再占用一个块来存储这些数据吧！由于他们看起来像是站在上帝视角来描述这个文件系统的，所以我们把它放在最开始的块上，并把它叫做<strong>超级块</strong>，现在的布局如下。</p>
+<p><img src="https://i.loli.net/2021/08/23/qTvm4b8HSYtNXiW.jpg" alt="pic_b2c9c063.png"></p>
+<p>我们继续精益求精。</p>
+<p>现在，<strong>块位图、inode 位图、inode 表</strong>，都是是固定地占据这块 1、块 2、块 3 这三个位置。</p>
+<p>假如之后 inode 的数量很多，使得 inode 表或者 inode 位图需要占据多个块，怎么办？ 或者，块的数量增多 （硬盘本身大了，或者每个块变小了） ，块位图需要占据多个块，怎么办？</p>
+<p>程序是死的，你不告诉它哪个块表示什么，它可不会自己猜。</p>
+<p>很简单，与超级块记录信息一样，这些信息也选择一个块来记录，就不怕了。那我们就选择紧跟在超级块后面的 1 号块来记录这些信息吧，并把它称之为<strong>块描述符</strong>。</p>
+<p><img src="https://i.loli.net/2021/08/23/TrHK72ENmiCOeWV.jpg" alt="pic_6cf27db5.png"></p>
+<p>当然，这些所在块号只是记录起始块号，块位图、inode 位图、inode 表分别都可以占用多个块。</p>
+<p>好了，大功告成！</p>
+<h2 id="6-目录文件"><a href="#6-目录文件" class="headerlink" title="6 目录文件"></a>6 目录文件</h2><p>现在，我们再尝试存入一批文件。</p>
 <ul>
-<li><p>方法一</p>
-<p>先进入容器终端</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it mysql /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>默认是没有 vi的，先装它：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">apt update <span class="token operator">&amp;&amp;</span> apt <span class="token function">install</span> vim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>然后，mysql 配置文件 my.cnf添加配置：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">default_authentication_plugin<span class="token operator">=</span>mysql_native_password<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>方法二</p>
-<p>进入容器终端</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it mysql /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在mysql下运行命令</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">ALTER USER 'YOURUSERNAME'@'%' IDENTIFIED WITH mysql_native_password BY 'YOURPASSWORD';<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<li> 葵花宝典.txt</li>
+<li> 高量期末复习资料.mp4</li>
+<li> 赘婿1.mp4</li>
+<li> 赘婿2.mp4</li>
+<li> 赘婿3.mp4</li>
+<li> 赘婿4.mp4</li>
+<li> 中科院物理所的秘密.pdf</li>
+</ul>
+<p>诶？这看着好不爽，所有的文件都是平铺开的，能不能拥有<strong>层级关系</strong>呢？比如这样</p>
+<ul>
+<li> 葵花宝典.txt</li>
+<li> 高量期末复习资料.mp4</li>
+<li>赘婿<ul>
+<li> 赘婿1.mp4</li>
+<li> 赘婿2.mp4</li>
+<li> 赘婿3.mp4</li>
+<li> 赘婿4.mp4</li>
 </ul>
 </li>
-<li><p>MySQL数据库配置：</p>
-<blockquote>
-<p>  数据库用户：root<br>  数据库密码：123456<br>  数据库名：owncloud<br>  数据库主机：mysql 或 my-mysql</p>
-</blockquote>
-</li>
-</ol>
-<h4 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h4><p>以将上面启动 owncloud 和 mysql 容器的两个步骤合成一步完成，这里介绍 <code>docker-compose</code> 的使用。</p>
-<ol>
-<li><p>安装</p>
-<pre class="line-numbers language-bash"><code class="language-bash">pip <span class="token function">install</span> -U docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>docker-compose.yml 文件编写</p>
-<pre class="line-numbers language-yml"><code class="language-yml">version: '2'
-services:
-  owncloud:
-    image: owncloud
-    links: 
-      - mysql:mysql
-    volumes:
-      - "/data/db/owncloud:/var/www/html/data"
-    ports:
-      - 5679:80
-  mysql:
-    image: mysql
-    volumes:
-      - "/data/db/mysql:/var/lib/mysql"
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: "123456"
-      MYSQL_DATABASE: ownCloud<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>docker-compose 运行和停止</p>
-<p> 注意：<code>docker-compose</code> 必须在 <code>docker-compose.yml</code> 文件所在目录中执行，否则会报错</p>
-<p> docker-compose 后台启动</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> docker-compose 查看状态</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># docker-compose ps</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> docker-compose 停止和删除</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># docker-compose stop</span>
-<span class="token comment" spellcheck="true"># dcoker-compose rm</span>
-
-相当上面两条命令
-<span class="token comment" spellcheck="true"># dcoker-compose down</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="使用Dockera安装WordPress"><a href="#使用Dockera安装WordPress" class="headerlink" title="使用Dockera安装WordPress"></a>使用Dockera安装WordPress</h2><ol>
-<li><p>pull WordPress镜像</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> docker pull wordpress<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>运行MySQL</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD<span class="token operator">=</span>123456 -d mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>创建WordPress数据库</p>
-<p> 进入容器终端</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it mysql /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 进入mysql</p>
-<pre class="line-numbers language-bash"><code class="language-bash">mysql -u root -p 123456<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 创建数据库</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">database</span> wordpress<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>运行WordPress</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> docker run --name wordpress --link mysql:mysql -p 80:80 -d wordpress<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 其中别名，主机端口号根据情况自行配置</p>
-</li>
-<li><p> 浏览器访问即可</p>
-</li>
-</ol>
+<li> 中科院物理所的秘密.pdf</li>
+</ul>
+<p>我们将葵花宝典.txt 这种称为<strong>普通文件</strong>，将赘婿这种称为<strong>目录文件</strong>，如果要访问赘婿1.mp4，那全文件名要写成</p>
+<pre><code>赘婿/赘婿1.mp4。</code></pre>
+<p>如何做到这一点呢？那我们又得把 inode 结构拿出来说事了。 </p>
+<p><img src="https://i.loli.net/2021/08/23/bUTlxreRc3I6Vzf.png" alt="pic_311b038f.png"></p>
+<p>此时需要一个属性来区分这个文件是普通文件，还是目录文件。</p>
+<p>缺什么就补什么嘛，我们已经很熟悉了，专门加一个 4 字节，来表示文件类型。</p>
+<p><img src="https://i.loli.net/2021/08/23/MeUHouxPbyKI9m1.png" alt="pic_41091188.png"></p>
+<p>如果是<strong>普通文件</strong>，则这个 inode 所指向的数据块仍然和之前一样，就是文件本身原封不动的内容。</p>
+<p>但如果是<strong>目录文件</strong>，则这个 inode 所指向的数据块，就需要重新规划了。</p>
+<p>这个数据块里应该是什么样子呢？可以是一个一个指向不同 inode 的紧挨着的结构体，比如这样。</p>
+<p><img src="https://i.loli.net/2021/08/23/SkcqdQxeg2UKWAy.png" alt="pic_12cc6dfe.png"> 这样先通过 赘婿 这个目录文件，找到所在的数据块。再根据这个数据块里的一个个带有 inode 信息的结构体，找到这个目录下的所有文件。</p>
+<p>完美！</p>
+<h2 id="7-子目录"><a href="#7-子目录" class="headerlink" title="7 子目录"></a>7 子目录</h2><p>不过这样的话，你想想看，如果想要查看一下赘婿<strong>这个目录下的所有文件</strong>（比如 ll 命令） ，将文件名和文件类型都展示出来，怎么办呢？</p>
+<p>就需要把一个个结构体指向的 inode 从 inode 表中取出，再把文件名和文件类型取出，这很是浪费时间。</p>
+<p>而让用户看到一个目录下的所有文件，又是一个极其常见的操作。</p>
+<p>所以，不如把文件名和文件类型这种常见的信息，放在数据块中的结构体里吧。</p>
+<p><img src="https://i.loli.net/2021/08/23/PuA5LqRIFdgxYMC.png" alt="pic_6f99b963.png"> 同时，inode 结构中的文件名，好像就没啥用了，这种变长的东西放在这种定长的结构中本身就很讨厌，早就想给它去掉了。而且还能给其他信息省下空间，比如文件所在块的数组，就能再多几个了。</p>
+<p>太好了，去掉它！ </p>
+<p><img src="https://i.loli.net/2021/08/23/KNkRBm6rdbnxDjH.png" alt="pic_2f359a2a.png"> OK，大功告成，现在我们就可以给文件分门别类放进不同目录下了，还可以在目录下创建目录，无限套娃！</p>
+<h2 id="8-根目录"><a href="#8-根目录" class="headerlink" title="8 根目录"></a>8 根目录</h2><p>现在的文件系统，已经比较完善了，只是还有一点不太爽。 我们访问到一个目录下，可以很舒服地看到目录里的文件，然后再根据名称访问这个目录下的文件或者目录，整个过程都是一个套路。 但是，最上层的目录下的所有文件，即根目录，现在仍然需要通过遍历所有的 inode 来获得，能不能和上面的套路统一呢？ 答案非常简单，我们规定，<strong>inode 表中的 0 号 inode，就表示根目录</strong>，一切的访问，就从这个根目录开始！</p>
+<p><img src="https://i.loli.net/2021/08/23/fKSVY4izQM9gURu.png" alt="pic_444b9afe.png"></p>
+<p>好了，这回没有然后了！</p>
+<p>我们最后来欣赏下我们的文件系统架构。 <img src="https://i.loli.net/2021/08/23/uDqeiYofz5AljR9.png" alt="pic_8d057073.png"></p>
+<p>你是不是觉得这没啥了不起的。</p>
+<p><strong>但这个破玩意，它就叫文件系统</strong> </p>
+<p>完~</p>
 
             </div>
             <hr/>
@@ -910,7 +955,7 @@ services:
                     </span>
                     <a href="http://yfxiongda.github.io" class="b-link-green">布菜克先生的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/05/08/Docker%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" class="b-link-green">Docker使用案例</a>
+                    <a href="/2021/09/12/%E4%BD%A0%E7%AE%A1%E8%BF%99%E7%A0%B4%E7%8E%A9%E6%84%8F%E5%84%BF%E5%8F%AB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%9F/" class="b-link-green">你管这破玩意儿叫文件系统？</a>
                 </p>
             </div>
 
@@ -932,28 +977,29 @@ services:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/08/Ubuntu%E9%83%A8%E7%BD%B2lamp%E7%8E%AF%E5%A2%83/">
+                <a href="/2021/09/12/%E4%BD%A0%E7%AE%A1%E8%BF%99%E7%A0%B4%E7%8E%A9%E6%84%8F%E5%84%BF%E5%8F%AB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%9F/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2021/05/08/GfvLj2Ubxpz6P47.png" class="responsive-img" alt="Ubuntu部署lamp环境">
+                        <img src="https://i.loli.net/2021/09/12/js62er8PCRGH5dt.png" class="responsive-img" alt="你管这破玩意儿叫文件系统？">
                         
-                        <span class="card-title">Ubuntu部署lamp环境</span>
+                        <span class="card-title">你管这破玩意儿叫文件系统？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文介绍了如何在Ubuntu下部署LAMP环境
+                            简单单单认识文件系统！
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -966,15 +1012,12 @@ services:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/LAMP/" target="_blank">
-                        <span class="chip bg-color">LAMP</span>
+                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" target="_blank">
+                        <span class="chip bg-color">文件系统</span>
                     </a>
                     
                 </div>
@@ -988,23 +1031,23 @@ services:
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/08/Ubuntu20-04%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">
+                <a href="/2021/07/11/%E4%B8%80%E6%AC%A1MySQL%E7%BA%BF%E4%B8%8A%E6%AD%BB%E9%94%81%E5%88%86%E6%9E%90/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2021/05/08/DcP4pRvWausHMCl.jpg" class="responsive-img" alt="Ubuntu20.04初步配置教程">
+                        <img src="https://i.loli.net/2021/07/11/aMQvIwYlWPbocmf.png" class="responsive-img" alt="一次MySQL线上死锁分析">
                         
-                        <span class="card-title">Ubuntu20.04初步配置教程</span>
+                        <span class="card-title">一次MySQL线上死锁分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            轻松上手Linux✌
+                            单行SQL语句出现死锁情况分析
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-11
                             </span>
                         <span class="publish-author">
                             
@@ -1021,12 +1064,8 @@ services:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BC%98%E5%8C%96/" target="_blank">
-                        <span class="chip bg-color">优化</span>
+                    <a href="/tags/MySQL-%E6%AD%BB%E9%94%81/" target="_blank">
+                        <span class="chip bg-color">MySQL 死锁</span>
                     </a>
                     
                 </div>
